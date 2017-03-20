@@ -1,0 +1,2205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Zit.Entity" />
+  <xs:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="UserContext">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StoreAdress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoreCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+      <xs:element minOccurs="0" name="StoreName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserContext" nillable="true" type="tns:UserContext" />
+  <xs:complexType name="ArrayOfCF_Obj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CF_Obj" nillable="true" type="tns:CF_Obj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCF_Obj" nillable="true" type="tns:ArrayOfCF_Obj" />
+  <xs:complexType name="CF_Obj">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q1:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GJ_TranDetail" nillable="true" type="tns:ArrayOfGJ_TranDetail" />
+          <xs:element minOccurs="0" name="IVM_Adj" nillable="true" type="tns:ArrayOfIVM_Adj" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="ObjCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POS_SaleOrder" nillable="true" type="tns:ArrayOfPOS_SaleOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CF_Obj" nillable="true" type="tns:CF_Obj" />
+  <xs:complexType name="ArrayOfGJ_TranDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GJ_TranDetail" nillable="true" type="tns:GJ_TranDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGJ_TranDetail" nillable="true" type="tns:ArrayOfGJ_TranDetail" />
+  <xs:complexType name="GJ_TranDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q2:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AcctId" type="xs:int" />
+          <xs:element minOccurs="0" name="CF_Acct" nillable="true" type="tns:CF_Acct" />
+          <xs:element minOccurs="0" name="CF_Obj" nillable="true" type="tns:CF_Obj" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Credit" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Debit" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GJ_Tran" nillable="true" type="tns:GJ_Tran" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LineId" type="xs:int" />
+          <xs:element minOccurs="0" name="RefObjId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TransId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GJ_TranDetail" nillable="true" type="tns:GJ_TranDetail" />
+  <xs:complexType name="CF_Acct">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q3:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AcctCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AcctName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GJ_TranDetail" nillable="true" type="tns:ArrayOfGJ_TranDetail" />
+          <xs:element minOccurs="0" name="IVM_Adj" nillable="true" type="tns:ArrayOfIVM_Adj" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="RequireObj" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CF_Acct" nillable="true" type="tns:CF_Acct" />
+  <xs:complexType name="ArrayOfIVM_Adj">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_Adj" nillable="true" type="tns:IVM_Adj" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_Adj" nillable="true" type="tns:ArrayOfIVM_Adj" />
+  <xs:complexType name="IVM_Adj">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q4:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdjDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="AdjNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CF_Acct" nillable="true" type="tns:CF_Acct" />
+          <xs:element minOccurs="0" name="CF_Obj" nillable="true" type="tns:CF_Obj" />
+          <xs:element minOccurs="0" name="CF_Store" nillable="true" type="tns:CF_Store" />
+          <xs:element minOccurs="0" name="CostAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DebitAcctId" type="xs:int" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IVM_AdjDetail" nillable="true" type="tns:ArrayOfIVM_AdjDetail" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="ObjId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_Adj" nillable="true" type="tns:IVM_Adj" />
+  <xs:complexType name="CF_Store">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q5:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CashAcctId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IVM_Adj" nillable="true" type="tns:ArrayOfIVM_Adj" />
+          <xs:element minOccurs="0" name="IVM_InvTransfer" nillable="true" type="tns:ArrayOfIVM_InvTransfer" />
+          <xs:element minOccurs="0" name="IVM_InvTransfer1" nillable="true" type="tns:ArrayOfIVM_InvTransfer" />
+          <xs:element minOccurs="0" name="IVM_Transaction" nillable="true" type="tns:ArrayOfIVM_Transaction" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="InvAcctId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POM_PurchaseInvoice" nillable="true" type="tns:ArrayOfPOM_PurchaseInvoice" />
+          <xs:element minOccurs="0" name="POS_SaleOrder" nillable="true" type="tns:ArrayOfPOS_SaleOrder" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RevAcctId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SoldCostAcctId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CF_Store" nillable="true" type="tns:CF_Store" />
+  <xs:complexType name="ArrayOfIVM_InvTransfer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_InvTransfer" nillable="true" type="tns:IVM_InvTransfer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_InvTransfer" nillable="true" type="tns:ArrayOfIVM_InvTransfer" />
+  <xs:complexType name="IVM_InvTransfer">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q6:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CF_Store" nillable="true" type="tns:CF_Store" />
+          <xs:element minOccurs="0" name="CF_Store1" nillable="true" type="tns:CF_Store" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IVM_InvTransferDetail" nillable="true" type="tns:ArrayOfIVM_InvTransferDetail" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="ToStoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="TransferDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TransferNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_InvTransfer" nillable="true" type="tns:IVM_InvTransfer" />
+  <xs:complexType name="ArrayOfIVM_InvTransferDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_InvTransferDetail" nillable="true" type="tns:IVM_InvTransferDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_InvTransferDetail" nillable="true" type="tns:ArrayOfIVM_InvTransferDetail" />
+  <xs:complexType name="IVM_InvTransferDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q7:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CostAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CostPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+          <xs:element minOccurs="0" name="IVM_InvTransfer" nillable="true" type="tns:IVM_InvTransfer" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="Seq" type="xs:int" />
+          <xs:element minOccurs="0" name="TransferId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_InvTransferDetail" nillable="true" type="tns:IVM_InvTransferDetail" />
+  <xs:complexType name="IVM_Barcode">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q8:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Barcode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IVM_AdjDetail" nillable="true" type="tns:ArrayOfIVM_AdjDetail" />
+          <xs:element minOccurs="0" name="IVM_BarcodeDetail" nillable="true" type="tns:ArrayOfIVM_BarcodeDetail" />
+          <xs:element minOccurs="0" name="IVM_InvTransferDetail" nillable="true" type="tns:ArrayOfIVM_InvTransferDetail" />
+          <xs:element minOccurs="0" name="IVM_Transaction" nillable="true" type="tns:ArrayOfIVM_Transaction" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="POM_PurchaseInvoiceDetail" nillable="true" type="tns:ArrayOfPOM_PurchaseInvoiceDetail" />
+          <xs:element minOccurs="0" name="POS_SaleOrderDetail" nillable="true" type="tns:ArrayOfPOS_SaleOrderDetail" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+  <xs:complexType name="ArrayOfIVM_AdjDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_AdjDetail" nillable="true" type="tns:IVM_AdjDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_AdjDetail" nillable="true" type="tns:ArrayOfIVM_AdjDetail" />
+  <xs:complexType name="IVM_AdjDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q9:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdjId" type="xs:int" />
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CostAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CostPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IVM_Adj" nillable="true" type="tns:IVM_Adj" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="Seq" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_AdjDetail" nillable="true" type="tns:IVM_AdjDetail" />
+  <xs:complexType name="ArrayOfIVM_BarcodeDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_BarcodeDetail" nillable="true" type="tns:IVM_BarcodeDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_BarcodeDetail" nillable="true" type="tns:ArrayOfIVM_BarcodeDetail" />
+  <xs:complexType name="IVM_BarcodeDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q10:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductVariantAttributeValue" nillable="true" type="tns:ProductVariantAttributeValue" />
+          <xs:element minOccurs="0" name="ProductVariantAttributeValueId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_BarcodeDetail" nillable="true" type="tns:IVM_BarcodeDetail" />
+  <xs:complexType name="ProductVariantAttributeValue">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q11:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociatedProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="AttributeValueTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="ColorSquaresRgb" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="IVM_BarcodeDetail" nillable="true" type="tns:ArrayOfIVM_BarcodeDetail" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsPreSelected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PictureId" type="xs:int" />
+          <xs:element minOccurs="0" name="PriceAdjustment" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProductVariantAttributeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Product_ProductAttribute_Mapping" nillable="true" type="tns:Product_ProductAttribute_Mapping" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="WeightAdjustment" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductVariantAttributeValue" nillable="true" type="tns:ProductVariantAttributeValue" />
+  <xs:complexType name="Product_ProductAttribute_Mapping">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q12:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttributeControlTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductAttribute" nillable="true" type="tns:ProductAttribute" />
+          <xs:element minOccurs="0" name="ProductAttributeId" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductVariantAttributeValue" nillable="true" type="tns:ArrayOfProductVariantAttributeValue" />
+          <xs:element minOccurs="0" name="TextPrompt" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Product_ProductAttribute_Mapping" nillable="true" type="tns:Product_ProductAttribute_Mapping" />
+  <xs:complexType name="Product">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q13:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalShippingCharge" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AdminComment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AllowBackInStockSubscriptions" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AllowCustomerReviews" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AllowedQuantities" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ApprovedRatingSum" type="xs:int" />
+          <xs:element minOccurs="0" name="ApprovedTotalReviews" type="xs:int" />
+          <xs:element minOccurs="0" name="AutomaticallyAddRequiredProducts" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AvailableEndDateTimeUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="AvailableForPreOrder" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AvailableStartDateTimeUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BackInStockSubscription" nillable="true" type="tns:ArrayOfBackInStockSubscription" />
+          <xs:element minOccurs="0" name="BackorderModeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CallForPrice" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CustomerEntersPrice" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DeliveryDateId" type="xs:int" />
+          <xs:element minOccurs="0" name="DisableBuyButton" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DisableWishlistButton" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Discount" nillable="true" type="tns:ArrayOfDiscount" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="DisplayStockAvailability" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DisplayStockQuantity" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DownloadActivationTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="DownloadExpirationDays" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="DownloadId" type="xs:int" />
+          <xs:element minOccurs="0" name="FullDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GiftCardTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Gtin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HasDiscountsApplied" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasSampleDownload" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasTierPrices" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HasUserAgreement" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Height" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:ArrayOfIVM_Barcode" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsDownload" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsFreeShipping" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsGiftCard" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsRecurring" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsShipEnabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsTaxExempt" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Length" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LimitedToStores" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LowStockActivityId" type="xs:int" />
+          <xs:element minOccurs="0" name="ManageInventoryMethodId" type="xs:int" />
+          <xs:element minOccurs="0" name="ManufacturerPartNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaxNumberOfDownloads" type="xs:int" />
+          <xs:element minOccurs="0" name="MaximumCustomerEnteredPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MetaDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaKeywords" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MinStockQuantity" type="xs:int" />
+          <xs:element minOccurs="0" name="MinimumCustomerEnteredPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NotApprovedRatingSum" type="xs:int" />
+          <xs:element minOccurs="0" name="NotApprovedTotalReviews" type="xs:int" />
+          <xs:element minOccurs="0" name="NotifyAdminForQuantityBelow" type="xs:int" />
+          <xs:element minOccurs="0" name="OldPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderItem" nillable="true" type="tns:ArrayOfOrderItem" />
+          <xs:element minOccurs="0" name="OrderMaximumQuantity" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderMinimumQuantity" type="xs:int" />
+          <xs:element minOccurs="0" name="ParentGroupedProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="PreOrderAvailabilityStartDateTimeUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProductCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProductReview" nillable="true" type="tns:ArrayOfProductReview" />
+          <xs:element minOccurs="0" name="ProductTag" nillable="true" type="tns:ArrayOfProductTag" />
+          <xs:element minOccurs="0" name="ProductTemplateId" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductVariantAttributeCombination" nillable="true" type="tns:ArrayOfProductVariantAttributeCombination" />
+          <xs:element minOccurs="0" name="Product_Category_Mapping" nillable="true" type="tns:ArrayOfProduct_Category_Mapping" />
+          <xs:element minOccurs="0" name="Product_Manufacturer_Mapping" nillable="true" type="tns:ArrayOfProduct_Manufacturer_Mapping" />
+          <xs:element minOccurs="0" name="Product_Picture_Mapping" nillable="true" type="tns:ArrayOfProduct_Picture_Mapping" />
+          <xs:element minOccurs="0" name="Product_ProductAttribute_Mapping" nillable="true" type="tns:ArrayOfProduct_ProductAttribute_Mapping" />
+          <xs:element minOccurs="0" name="Product_SpecificationAttribute_Mapping" nillable="true" type="tns:ArrayOfProduct_SpecificationAttribute_Mapping" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RecurringCycleLength" type="xs:int" />
+          <xs:element minOccurs="0" name="RecurringCyclePeriodId" type="xs:int" />
+          <xs:element minOccurs="0" name="RecurringTotalCycles" type="xs:int" />
+          <xs:element minOccurs="0" name="RequireOtherProducts" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RequiredProductIds" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SKU" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SampleDownloadId" type="xs:int" />
+          <xs:element minOccurs="0" name="ShoppingCartItem" nillable="true" type="tns:ArrayOfShoppingCartItem" />
+          <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShowOnHomePage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SpecialPrice" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SpecialPriceEndDateTimeUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SpecialPriceStartDateTimeUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StockQuantity" type="xs:int" />
+          <xs:element minOccurs="0" name="SubjectToAcl" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TaxCategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="TierPrice" nillable="true" type="tns:ArrayOfTierPrice" />
+          <xs:element minOccurs="0" name="UnlimitedDownloads" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UserAgreementText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorId" type="xs:int" />
+          <xs:element minOccurs="0" name="VisibleIndividually" type="xs:boolean" />
+          <xs:element minOccurs="0" name="WarehouseId" type="xs:int" />
+          <xs:element minOccurs="0" name="Weight" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Width" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Product" nillable="true" type="tns:Product" />
+  <xs:complexType name="ArrayOfBackInStockSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BackInStockSubscription" nillable="true" type="tns:BackInStockSubscription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBackInStockSubscription" nillable="true" type="tns:ArrayOfBackInStockSubscription" />
+  <xs:complexType name="BackInStockSubscription">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q14:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BackInStockSubscription" nillable="true" type="tns:BackInStockSubscription" />
+  <xs:complexType name="Customer">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q15:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ActivityLog" nillable="true" type="tns:ArrayOfActivityLog" />
+          <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="Address1" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="Address2" nillable="true" type="tns:ArrayOfAddress" />
+          <xs:element minOccurs="0" name="AdminComment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AffiliateId" type="xs:int" />
+          <xs:element minOccurs="0" name="BackInStockSubscription" nillable="true" type="tns:ArrayOfBackInStockSubscription" />
+          <xs:element minOccurs="0" name="BillingAddress_Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="BlogComment" nillable="true" type="tns:ArrayOfBlogComment" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CustomerGuid" type="ser:guid" />
+          <xs:element minOccurs="0" name="CustomerRole" nillable="true" type="tns:ArrayOfCustomerRole" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalAuthenticationRecord" nillable="true" type="tns:ArrayOfExternalAuthenticationRecord" />
+          <xs:element minOccurs="0" name="Forums_Post" nillable="true" type="tns:ArrayOfForums_Post" />
+          <xs:element minOccurs="0" name="Forums_PrivateMessage" nillable="true" type="tns:ArrayOfForums_PrivateMessage" />
+          <xs:element minOccurs="0" name="Forums_PrivateMessage1" nillable="true" type="tns:ArrayOfForums_PrivateMessage" />
+          <xs:element minOccurs="0" name="Forums_Subscription" nillable="true" type="tns:ArrayOfForums_Subscription" />
+          <xs:element minOccurs="0" name="Forums_Topic" nillable="true" type="tns:ArrayOfForums_Topic" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsSystemAccount" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsTaxExempt" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastActivityDateUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LastIpAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastLoginDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Log" nillable="true" type="tns:ArrayOfLog" />
+          <xs:element minOccurs="0" name="NewsComment" nillable="true" type="tns:ArrayOfNewsComment" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:ArrayOfOrder" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PasswordFormatId" type="xs:int" />
+          <xs:element minOccurs="0" name="PasswordSalt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PollVotingRecord" nillable="true" type="tns:ArrayOfPollVotingRecord" />
+          <xs:element minOccurs="0" name="ProductReview" nillable="true" type="tns:ArrayOfProductReview" />
+          <xs:element minOccurs="0" name="ReturnRequest" nillable="true" type="tns:ArrayOfReturnRequest" />
+          <xs:element minOccurs="0" name="RewardPointsHistory" nillable="true" type="tns:ArrayOfRewardPointsHistory" />
+          <xs:element minOccurs="0" name="ShippingAddress_Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ShoppingCartItem" nillable="true" type="tns:ArrayOfShoppingCartItem" />
+          <xs:element minOccurs="0" name="SystemName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Customer" nillable="true" type="tns:Customer" />
+  <xs:complexType name="ArrayOfActivityLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityLog" nillable="true" type="tns:ActivityLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivityLog" nillable="true" type="tns:ArrayOfActivityLog" />
+  <xs:complexType name="ActivityLog">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q16:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivityLogType" nillable="true" type="tns:ActivityLogType" />
+          <xs:element minOccurs="0" name="ActivityLogTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivityLog" nillable="true" type="tns:ActivityLog" />
+  <xs:complexType name="ActivityLogType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q17:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivityLog" nillable="true" type="tns:ArrayOfActivityLog" />
+          <xs:element minOccurs="0" name="Enabled" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SystemKeyword" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivityLogType" nillable="true" type="tns:ActivityLogType" />
+  <xs:complexType name="Address">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q18:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Affiliate" nillable="true" type="tns:ArrayOfAffiliate" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:ArrayOfCustomer" />
+          <xs:element minOccurs="0" name="Customer1" nillable="true" type="tns:ArrayOfCustomer" />
+          <xs:element minOccurs="0" name="Customer2" nillable="true" type="tns:ArrayOfCustomer" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:ArrayOfOrder" />
+          <xs:element minOccurs="0" name="Order1" nillable="true" type="tns:ArrayOfOrder" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StateProvince" nillable="true" type="tns:StateProvince" />
+          <xs:element minOccurs="0" name="StateProvinceId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ZipPostalCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="ArrayOfAffiliate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Affiliate" nillable="true" type="tns:Affiliate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAffiliate" nillable="true" type="tns:ArrayOfAffiliate" />
+  <xs:complexType name="Affiliate">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q19:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="AddressId" type="xs:int" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Affiliate" nillable="true" type="tns:Affiliate" />
+  <xs:complexType name="Country">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q20:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="tns:ArrayOfAddress" />
+          <xs:element minOccurs="0" name="AllowsBilling" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AllowsShipping" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumericIsoCode" type="xs:int" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ShippingMethod" nillable="true" type="tns:ArrayOfShippingMethod" />
+          <xs:element minOccurs="0" name="StateProvince" nillable="true" type="tns:ArrayOfStateProvince" />
+          <xs:element minOccurs="0" name="SubjectToVat" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ThreeLetterIsoCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TwoLetterIsoCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Country" nillable="true" type="tns:Country" />
+  <xs:complexType name="ArrayOfAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddress" nillable="true" type="tns:ArrayOfAddress" />
+  <xs:complexType name="ArrayOfShippingMethod">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShippingMethod" nillable="true" type="tns:ShippingMethod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShippingMethod" nillable="true" type="tns:ArrayOfShippingMethod" />
+  <xs:complexType name="ShippingMethod">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q21:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Country" nillable="true" type="tns:ArrayOfCountry" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ShippingMethod" nillable="true" type="tns:ShippingMethod" />
+  <xs:complexType name="ArrayOfCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="tns:Country" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCountry" nillable="true" type="tns:ArrayOfCountry" />
+  <xs:complexType name="ArrayOfStateProvince">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StateProvince" nillable="true" type="tns:StateProvince" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStateProvince" nillable="true" type="tns:ArrayOfStateProvince" />
+  <xs:complexType name="StateProvince">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q22:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Abbreviation" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Address" nillable="true" type="tns:ArrayOfAddress" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xs:element minOccurs="0" name="CountryId" type="xs:int" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StateProvince" nillable="true" type="tns:StateProvince" />
+  <xs:complexType name="ArrayOfCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomer" nillable="true" type="tns:ArrayOfCustomer" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="Order">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q23:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="Address1" nillable="true" type="tns:Address" />
+          <xs:element minOccurs="0" name="AffiliateId" type="xs:int" />
+          <xs:element minOccurs="0" name="AllowStoringCreditCardNumber" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AuthorizationTransactionCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthorizationTransactionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthorizationTransactionResult" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BillingAddressId" type="xs:int" />
+          <xs:element minOccurs="0" name="CaptureTransactionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CaptureTransactionResult" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardCvv2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardExpirationMonth" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardExpirationYear" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CheckoutAttributeDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CheckoutAttributesXml" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CurrencyRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CustomValuesXml" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerCurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="CustomerIp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerLanguageId" type="xs:int" />
+          <xs:element minOccurs="0" name="CustomerTaxDisplayTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DiscountUsageHistory" nillable="true" type="tns:ArrayOfDiscountUsageHistory" />
+          <xs:element minOccurs="0" name="GiftCardUsageHistory" nillable="true" type="tns:ArrayOfGiftCardUsageHistory" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="MaskedCreditCardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderDiscount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderGuid" type="ser:guid" />
+          <xs:element minOccurs="0" name="OrderItem" nillable="true" type="tns:ArrayOfOrderItem" />
+          <xs:element minOccurs="0" name="OrderNote" nillable="true" type="tns:ArrayOfOrderNote" />
+          <xs:element minOccurs="0" name="OrderShippingExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderShippingInclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderStatusId" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderSubTotalDiscountExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderSubTotalDiscountInclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderSubtotalExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderSubtotalInclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PaidDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PaymentMethodAdditionalFeeExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PaymentMethodAdditionalFeeInclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PaymentMethodSystemName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentStatusId" type="xs:int" />
+          <xs:element minOccurs="0" name="PurchaseOrderNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RecurringPayment" nillable="true" type="tns:ArrayOfRecurringPayment" />
+          <xs:element minOccurs="0" name="RefundedAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RewardPointsHistory" nillable="true" type="tns:ArrayOfRewardPointsHistory" />
+          <xs:element minOccurs="0" name="RewardPointsWereAdded" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Shipment" nillable="true" type="tns:ArrayOfShipment" />
+          <xs:element minOccurs="0" name="ShippingAddressId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ShippingMethod" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShippingRateComputationMethodSystemName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShippingStatusId" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="SubscriptionTransactionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TaxRates" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VatNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="ArrayOfDiscountUsageHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DiscountUsageHistory" nillable="true" type="tns:DiscountUsageHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDiscountUsageHistory" nillable="true" type="tns:ArrayOfDiscountUsageHistory" />
+  <xs:complexType name="DiscountUsageHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q24:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Discount" nillable="true" type="tns:Discount" />
+          <xs:element minOccurs="0" name="DiscountId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DiscountUsageHistory" nillable="true" type="tns:DiscountUsageHistory" />
+  <xs:complexType name="Discount">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q25:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:ArrayOfCategory" />
+          <xs:element minOccurs="0" name="CouponCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiscountAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountLimitationId" type="xs:int" />
+          <xs:element minOccurs="0" name="DiscountPercentage" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountRequirement" nillable="true" type="tns:ArrayOfDiscountRequirement" />
+          <xs:element minOccurs="0" name="DiscountTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="DiscountUsageHistory" nillable="true" type="tns:ArrayOfDiscountUsageHistory" />
+          <xs:element minOccurs="0" name="EndDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LimitationTimes" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ArrayOfProduct" />
+          <xs:element minOccurs="0" name="RequiresCouponCode" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StartDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UsePercentage" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Discount" nillable="true" type="tns:Discount" />
+  <xs:complexType name="ArrayOfCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
+  <xs:complexType name="Category">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q26:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowCustomersToSelectPageSize" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CategoryTemplateId" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Discount" nillable="true" type="tns:ArrayOfDiscount" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="HasDiscountsApplied" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IncludeInTopMenu" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsHotCat" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LimitedToStores" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MetaDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaKeywords" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSizeOptions" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ParentCategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="PictureId" type="xs:int" />
+          <xs:element minOccurs="0" name="PriceRanges" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product_Category_Mapping" nillable="true" type="tns:ArrayOfProduct_Category_Mapping" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ShowOnHomePage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SubjectToAcl" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="ArrayOfDiscount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Discount" nillable="true" type="tns:Discount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDiscount" nillable="true" type="tns:ArrayOfDiscount" />
+  <xs:complexType name="ArrayOfProduct_Category_Mapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product_Category_Mapping" nillable="true" type="tns:Product_Category_Mapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct_Category_Mapping" nillable="true" type="tns:ArrayOfProduct_Category_Mapping" />
+  <xs:complexType name="Product_Category_Mapping">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q27:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+          <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsFeaturedProduct" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Product_Category_Mapping" nillable="true" type="tns:Product_Category_Mapping" />
+  <xs:complexType name="ArrayOfDiscountRequirement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DiscountRequirement" nillable="true" type="tns:DiscountRequirement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDiscountRequirement" nillable="true" type="tns:ArrayOfDiscountRequirement" />
+  <xs:complexType name="DiscountRequirement">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q28:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Discount" nillable="true" type="tns:Discount" />
+          <xs:element minOccurs="0" name="DiscountId" type="xs:int" />
+          <xs:element minOccurs="0" name="DiscountRequirementRuleSystemName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DiscountRequirement" nillable="true" type="tns:DiscountRequirement" />
+  <xs:complexType name="ArrayOfProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+  <xs:complexType name="ArrayOfGiftCardUsageHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GiftCardUsageHistory" nillable="true" type="tns:GiftCardUsageHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGiftCardUsageHistory" nillable="true" type="tns:ArrayOfGiftCardUsageHistory" />
+  <xs:complexType name="GiftCardUsageHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q29:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="GiftCard" nillable="true" type="tns:GiftCard" />
+          <xs:element minOccurs="0" name="GiftCardId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="UsedValue" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UsedWithOrderId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GiftCardUsageHistory" nillable="true" type="tns:GiftCardUsageHistory" />
+  <xs:complexType name="GiftCard">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q30:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="GiftCardCouponCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GiftCardTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="GiftCardUsageHistory" nillable="true" type="tns:ArrayOfGiftCardUsageHistory" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsGiftCardActivated" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsRecipientNotified" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderItem" nillable="true" type="tns:OrderItem" />
+          <xs:element minOccurs="0" name="PurchasedWithOrderItemId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="RecipientEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RecipientName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SenderEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GiftCard" nillable="true" type="tns:GiftCard" />
+  <xs:complexType name="OrderItem">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q31="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q31:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttributeDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AttributesXml" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiscountAmountExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountAmountInclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DownloadCount" type="xs:int" />
+          <xs:element minOccurs="0" name="GiftCard" nillable="true" type="tns:ArrayOfGiftCard" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsDownloadActivated" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ItemWeight" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LicenseDownloadId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderItemGuid" type="ser:guid" />
+          <xs:element minOccurs="0" name="OriginalProductCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PriceExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PriceInclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="UnitPriceExclTax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UnitPriceInclTax" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderItem" nillable="true" type="tns:OrderItem" />
+  <xs:complexType name="ArrayOfGiftCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GiftCard" nillable="true" type="tns:GiftCard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGiftCard" nillable="true" type="tns:ArrayOfGiftCard" />
+  <xs:complexType name="ArrayOfOrderItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderItem" nillable="true" type="tns:OrderItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderItem" nillable="true" type="tns:ArrayOfOrderItem" />
+  <xs:complexType name="ArrayOfOrderNote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderNote" nillable="true" type="tns:OrderNote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderNote" nillable="true" type="tns:ArrayOfOrderNote" />
+  <xs:complexType name="OrderNote">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q32:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DisplayToCustomer" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderNote" nillable="true" type="tns:OrderNote" />
+  <xs:complexType name="ArrayOfRecurringPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RecurringPayment" nillable="true" type="tns:RecurringPayment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecurringPayment" nillable="true" type="tns:ArrayOfRecurringPayment" />
+  <xs:complexType name="RecurringPayment">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q33="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q33:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CycleLength" type="xs:int" />
+          <xs:element minOccurs="0" name="CyclePeriodId" type="xs:int" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="InitialOrderId" type="xs:int" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="RecurringPaymentHistory" nillable="true" type="tns:ArrayOfRecurringPaymentHistory" />
+          <xs:element minOccurs="0" name="StartDateUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TotalCycles" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RecurringPayment" nillable="true" type="tns:RecurringPayment" />
+  <xs:complexType name="ArrayOfRecurringPaymentHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RecurringPaymentHistory" nillable="true" type="tns:RecurringPaymentHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecurringPaymentHistory" nillable="true" type="tns:ArrayOfRecurringPaymentHistory" />
+  <xs:complexType name="RecurringPaymentHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q34:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+          <xs:element minOccurs="0" name="RecurringPayment" nillable="true" type="tns:RecurringPayment" />
+          <xs:element minOccurs="0" name="RecurringPaymentId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RecurringPaymentHistory" nillable="true" type="tns:RecurringPaymentHistory" />
+  <xs:complexType name="ArrayOfRewardPointsHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RewardPointsHistory" nillable="true" type="tns:RewardPointsHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRewardPointsHistory" nillable="true" type="tns:ArrayOfRewardPointsHistory" />
+  <xs:complexType name="RewardPointsHistory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q35="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q35:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="Points" type="xs:int" />
+          <xs:element minOccurs="0" name="PointsBalance" type="xs:int" />
+          <xs:element minOccurs="0" name="UsedAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UsedWithOrder_Id" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RewardPointsHistory" nillable="true" type="tns:RewardPointsHistory" />
+  <xs:complexType name="ArrayOfShipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Shipment" nillable="true" type="tns:Shipment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShipment" nillable="true" type="tns:ArrayOfShipment" />
+  <xs:complexType name="Shipment">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q36:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DeliveryDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+          <xs:element minOccurs="0" name="ShipmentItem" nillable="true" type="tns:ArrayOfShipmentItem" />
+          <xs:element minOccurs="0" name="ShippedDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TotalWeight" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TrackingNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Shipment" nillable="true" type="tns:Shipment" />
+  <xs:complexType name="ArrayOfShipmentItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShipmentItem" nillable="true" type="tns:ShipmentItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShipmentItem" nillable="true" type="tns:ArrayOfShipmentItem" />
+  <xs:complexType name="ShipmentItem">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q37="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q37:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderItemId" type="xs:int" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="Shipment" nillable="true" type="tns:Shipment" />
+          <xs:element minOccurs="0" name="ShipmentId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ShipmentItem" nillable="true" type="tns:ShipmentItem" />
+  <xs:complexType name="ArrayOfBlogComment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlogComment" nillable="true" type="tns:BlogComment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlogComment" nillable="true" type="tns:ArrayOfBlogComment" />
+  <xs:complexType name="BlogComment">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q38:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BlogPost" nillable="true" type="tns:BlogPost" />
+          <xs:element minOccurs="0" name="BlogPostId" type="xs:int" />
+          <xs:element minOccurs="0" name="CommentText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BlogComment" nillable="true" type="tns:BlogComment" />
+  <xs:complexType name="BlogPost">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q39="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q39:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowComments" type="xs:boolean" />
+          <xs:element minOccurs="0" name="BlogComment" nillable="true" type="tns:ArrayOfBlogComment" />
+          <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommentCount" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Language" nillable="true" type="tns:Language" />
+          <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+          <xs:element minOccurs="0" name="LimitedToStores" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MetaDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaKeywords" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Tags" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BlogPost" nillable="true" type="tns:BlogPost" />
+  <xs:complexType name="Language">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q40:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BlogPost" nillable="true" type="tns:ArrayOfBlogPost" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="FlagImageFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LanguageCulture" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LimitedToStores" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LocaleStringResource" nillable="true" type="tns:ArrayOfLocaleStringResource" />
+          <xs:element minOccurs="0" name="LocalizedProperty" nillable="true" type="tns:ArrayOfLocalizedProperty" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="News" nillable="true" type="tns:ArrayOfNews" />
+          <xs:element minOccurs="0" name="Poll" nillable="true" type="tns:ArrayOfPoll" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Rtl" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UniqueSeoCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Language" nillable="true" type="tns:Language" />
+  <xs:complexType name="ArrayOfBlogPost">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlogPost" nillable="true" type="tns:BlogPost" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlogPost" nillable="true" type="tns:ArrayOfBlogPost" />
+  <xs:complexType name="ArrayOfLocaleStringResource">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocaleStringResource" nillable="true" type="tns:LocaleStringResource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocaleStringResource" nillable="true" type="tns:ArrayOfLocaleStringResource" />
+  <xs:complexType name="LocaleStringResource">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q41="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q41:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Language" nillable="true" type="tns:Language" />
+          <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+          <xs:element minOccurs="0" name="ResourceName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ResourceValue" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocaleStringResource" nillable="true" type="tns:LocaleStringResource" />
+  <xs:complexType name="ArrayOfLocalizedProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocalizedProperty" nillable="true" type="tns:LocalizedProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocalizedProperty" nillable="true" type="tns:ArrayOfLocalizedProperty" />
+  <xs:complexType name="LocalizedProperty">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q42:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EntityId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Language" nillable="true" type="tns:Language" />
+          <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+          <xs:element minOccurs="0" name="LocaleKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleKeyGroup" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleValue" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalizedProperty" nillable="true" type="tns:LocalizedProperty" />
+  <xs:complexType name="ArrayOfNews">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="News" nillable="true" type="tns:News" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNews" nillable="true" type="tns:ArrayOfNews" />
+  <xs:complexType name="News">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q43="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q43:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowComments" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CommentCount" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Full" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Language" nillable="true" type="tns:Language" />
+          <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+          <xs:element minOccurs="0" name="LimitedToStores" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MetaDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaKeywords" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewsComment" nillable="true" type="tns:ArrayOfNewsComment" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Short" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StartDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="News" nillable="true" type="tns:News" />
+  <xs:complexType name="ArrayOfNewsComment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NewsComment" nillable="true" type="tns:NewsComment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNewsComment" nillable="true" type="tns:ArrayOfNewsComment" />
+  <xs:complexType name="NewsComment">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q44:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CommentText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommentTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="News" nillable="true" type="tns:News" />
+          <xs:element minOccurs="0" name="NewsItemId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NewsComment" nillable="true" type="tns:NewsComment" />
+  <xs:complexType name="ArrayOfPoll">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Poll" nillable="true" type="tns:Poll" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPoll" nillable="true" type="tns:ArrayOfPoll" />
+  <xs:complexType name="Poll">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q45="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q45:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowGuestsToVote" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="EndDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Language" nillable="true" type="tns:Language" />
+          <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PollAnswer" nillable="true" type="tns:ArrayOfPollAnswer" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ShowOnHomePage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StartDateUtc" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SystemKeyword" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Poll" nillable="true" type="tns:Poll" />
+  <xs:complexType name="ArrayOfPollAnswer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PollAnswer" nillable="true" type="tns:PollAnswer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPollAnswer" nillable="true" type="tns:ArrayOfPollAnswer" />
+  <xs:complexType name="PollAnswer">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q46:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumberOfVotes" type="xs:int" />
+          <xs:element minOccurs="0" name="Poll" nillable="true" type="tns:Poll" />
+          <xs:element minOccurs="0" name="PollId" type="xs:int" />
+          <xs:element minOccurs="0" name="PollVotingRecord" nillable="true" type="tns:ArrayOfPollVotingRecord" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PollAnswer" nillable="true" type="tns:PollAnswer" />
+  <xs:complexType name="ArrayOfPollVotingRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PollVotingRecord" nillable="true" type="tns:PollVotingRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPollVotingRecord" nillable="true" type="tns:ArrayOfPollVotingRecord" />
+  <xs:complexType name="PollVotingRecord">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q47="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q47:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="PollAnswer" nillable="true" type="tns:PollAnswer" />
+          <xs:element minOccurs="0" name="PollAnswerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PollVotingRecord" nillable="true" type="tns:PollVotingRecord" />
+  <xs:complexType name="ArrayOfCustomerRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerRole" nillable="true" type="tns:CustomerRole" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomerRole" nillable="true" type="tns:ArrayOfCustomerRole" />
+  <xs:complexType name="CustomerRole">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q48="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q48:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AclRecord" nillable="true" type="tns:ArrayOfAclRecord" />
+          <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:ArrayOfCustomer" />
+          <xs:element minOccurs="0" name="FreeShipping" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsSystemRole" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PermissionRecord" nillable="true" type="tns:ArrayOfPermissionRecord" />
+          <xs:element minOccurs="0" name="SystemName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TaxExempt" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TierPrice" nillable="true" type="tns:ArrayOfTierPrice" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerRole" nillable="true" type="tns:CustomerRole" />
+  <xs:complexType name="ArrayOfAclRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AclRecord" nillable="true" type="tns:AclRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAclRecord" nillable="true" type="tns:ArrayOfAclRecord" />
+  <xs:complexType name="AclRecord">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q49="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q49:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerRole" nillable="true" type="tns:CustomerRole" />
+          <xs:element minOccurs="0" name="CustomerRoleId" type="xs:int" />
+          <xs:element minOccurs="0" name="EntityId" type="xs:int" />
+          <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AclRecord" nillable="true" type="tns:AclRecord" />
+  <xs:complexType name="ArrayOfPermissionRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PermissionRecord" nillable="true" type="tns:PermissionRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPermissionRecord" nillable="true" type="tns:ArrayOfPermissionRecord" />
+  <xs:complexType name="PermissionRecord">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q50="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q50:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerRole" nillable="true" type="tns:ArrayOfCustomerRole" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SystemName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PermissionRecord" nillable="true" type="tns:PermissionRecord" />
+  <xs:complexType name="ArrayOfTierPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TierPrice" nillable="true" type="tns:TierPrice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTierPrice" nillable="true" type="tns:ArrayOfTierPrice" />
+  <xs:complexType name="TierPrice">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q51="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q51:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerRole" nillable="true" type="tns:CustomerRole" />
+          <xs:element minOccurs="0" name="CustomerRoleId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TierPrice" nillable="true" type="tns:TierPrice" />
+  <xs:complexType name="ArrayOfExternalAuthenticationRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExternalAuthenticationRecord" nillable="true" type="tns:ExternalAuthenticationRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExternalAuthenticationRecord" nillable="true" type="tns:ArrayOfExternalAuthenticationRecord" />
+  <xs:complexType name="ExternalAuthenticationRecord">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q52="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q52:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalDisplayIdentifier" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExternalIdentifier" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OAuthAccessToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OAuthToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProviderSystemName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExternalAuthenticationRecord" nillable="true" type="tns:ExternalAuthenticationRecord" />
+  <xs:complexType name="ArrayOfForums_Post">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Forums_Post" nillable="true" type="tns:Forums_Post" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfForums_Post" nillable="true" type="tns:ArrayOfForums_Post" />
+  <xs:complexType name="Forums_Post">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q53="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q53:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Forums_Topic" nillable="true" type="tns:Forums_Topic" />
+          <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TopicId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Forums_Post" nillable="true" type="tns:Forums_Post" />
+  <xs:complexType name="Forums_Topic">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q54="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q54:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="ForumId" type="xs:int" />
+          <xs:element minOccurs="0" name="Forums_Forum" nillable="true" type="tns:Forums_Forum" />
+          <xs:element minOccurs="0" name="Forums_Post" nillable="true" type="tns:ArrayOfForums_Post" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LastPostCustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="LastPostId" type="xs:int" />
+          <xs:element minOccurs="0" name="LastPostTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NumPosts" type="xs:int" />
+          <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TopicTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Views" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Forums_Topic" nillable="true" type="tns:Forums_Topic" />
+  <xs:complexType name="Forums_Forum">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q55="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q55:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="ForumGroupId" type="xs:int" />
+          <xs:element minOccurs="0" name="Forums_Group" nillable="true" type="tns:Forums_Group" />
+          <xs:element minOccurs="0" name="Forums_Topic" nillable="true" type="tns:ArrayOfForums_Topic" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LastPostCustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="LastPostId" type="xs:int" />
+          <xs:element minOccurs="0" name="LastPostTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LastTopicId" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumPosts" type="xs:int" />
+          <xs:element minOccurs="0" name="NumTopics" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Forums_Forum" nillable="true" type="tns:Forums_Forum" />
+  <xs:complexType name="Forums_Group">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q56="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q56:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Forums_Forum" nillable="true" type="tns:ArrayOfForums_Forum" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Forums_Group" nillable="true" type="tns:Forums_Group" />
+  <xs:complexType name="ArrayOfForums_Forum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Forums_Forum" nillable="true" type="tns:Forums_Forum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfForums_Forum" nillable="true" type="tns:ArrayOfForums_Forum" />
+  <xs:complexType name="ArrayOfForums_Topic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Forums_Topic" nillable="true" type="tns:Forums_Topic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfForums_Topic" nillable="true" type="tns:ArrayOfForums_Topic" />
+  <xs:complexType name="ArrayOfForums_PrivateMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Forums_PrivateMessage" nillable="true" type="tns:Forums_PrivateMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfForums_PrivateMessage" nillable="true" type="tns:ArrayOfForums_PrivateMessage" />
+  <xs:complexType name="Forums_PrivateMessage">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q57="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q57:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="Customer1" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="FromCustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsDeletedByAuthor" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsDeletedByRecipient" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsRead" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToCustomerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Forums_PrivateMessage" nillable="true" type="tns:Forums_PrivateMessage" />
+  <xs:complexType name="ArrayOfForums_Subscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Forums_Subscription" nillable="true" type="tns:Forums_Subscription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfForums_Subscription" nillable="true" type="tns:ArrayOfForums_Subscription" />
+  <xs:complexType name="Forums_Subscription">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q58="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q58:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="ForumId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="SubscriptionGuid" type="ser:guid" />
+          <xs:element minOccurs="0" name="TopicId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Forums_Subscription" nillable="true" type="tns:Forums_Subscription" />
+  <xs:complexType name="ArrayOfLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
+  <xs:complexType name="Log">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q59="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q59:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FullMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IpAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LogLevelId" type="xs:int" />
+          <xs:element minOccurs="0" name="PageUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferrerUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShortMessage" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Log" nillable="true" type="tns:Log" />
+  <xs:complexType name="ArrayOfProductReview">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductReview" nillable="true" type="tns:ProductReview" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductReview" nillable="true" type="tns:ArrayOfProductReview" />
+  <xs:complexType name="ProductReview">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q60="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q60:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="HelpfulNoTotal" type="xs:int" />
+          <xs:element minOccurs="0" name="HelpfulYesTotal" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductReviewHelpfulness" nillable="true" type="tns:ArrayOfProductReviewHelpfulness" />
+          <xs:element minOccurs="0" name="Rating" type="xs:int" />
+          <xs:element minOccurs="0" name="ReviewText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductReview" nillable="true" type="tns:ProductReview" />
+  <xs:complexType name="ArrayOfProductReviewHelpfulness">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductReviewHelpfulness" nillable="true" type="tns:ProductReviewHelpfulness" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductReviewHelpfulness" nillable="true" type="tns:ArrayOfProductReviewHelpfulness" />
+  <xs:complexType name="ProductReviewHelpfulness">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q61="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q61:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductReview" nillable="true" type="tns:ProductReview" />
+          <xs:element minOccurs="0" name="ProductReviewId" type="xs:int" />
+          <xs:element minOccurs="0" name="WasHelpful" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductReviewHelpfulness" nillable="true" type="tns:ProductReviewHelpfulness" />
+  <xs:complexType name="ArrayOfReturnRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReturnRequest" nillable="true" type="tns:ReturnRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReturnRequest" nillable="true" type="tns:ArrayOfReturnRequest" />
+  <xs:complexType name="ReturnRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q62="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q62:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerComments" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderItemId" type="xs:int" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="ReasonForReturn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestedAction" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReturnRequestStatusId" type="xs:int" />
+          <xs:element minOccurs="0" name="StaffNotes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReturnRequest" nillable="true" type="tns:ReturnRequest" />
+  <xs:complexType name="ArrayOfShoppingCartItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShoppingCartItem" nillable="true" type="tns:ShoppingCartItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShoppingCartItem" nillable="true" type="tns:ArrayOfShoppingCartItem" />
+  <xs:complexType name="ShoppingCartItem">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q63="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q63:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttributesXml" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+          <xs:element minOccurs="0" name="CustomerEnteredPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="ShoppingCartTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ShoppingCartItem" nillable="true" type="tns:ShoppingCartItem" />
+  <xs:complexType name="ArrayOfIVM_Barcode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_Barcode" nillable="true" type="tns:ArrayOfIVM_Barcode" />
+  <xs:complexType name="ArrayOfProductTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductTag" nillable="true" type="tns:ProductTag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductTag" nillable="true" type="tns:ArrayOfProductTag" />
+  <xs:complexType name="ProductTag">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q64="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q64:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ArrayOfProduct" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductTag" nillable="true" type="tns:ProductTag" />
+  <xs:complexType name="ArrayOfProductVariantAttributeCombination">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductVariantAttributeCombination" nillable="true" type="tns:ProductVariantAttributeCombination" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductVariantAttributeCombination" nillable="true" type="tns:ArrayOfProductVariantAttributeCombination" />
+  <xs:complexType name="ProductVariantAttributeCombination">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q65="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q65:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowOutOfStockOrders" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AttributesXml" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Gtin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="ManufacturerPartNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OverriddenPrice" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="Sku" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StockQuantity" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductVariantAttributeCombination" nillable="true" type="tns:ProductVariantAttributeCombination" />
+  <xs:complexType name="ArrayOfProduct_Manufacturer_Mapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product_Manufacturer_Mapping" nillable="true" type="tns:Product_Manufacturer_Mapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct_Manufacturer_Mapping" nillable="true" type="tns:ArrayOfProduct_Manufacturer_Mapping" />
+  <xs:complexType name="Product_Manufacturer_Mapping">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q66="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q66:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsFeaturedProduct" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Manufacturer" nillable="true" type="tns:Manufacturer" />
+          <xs:element minOccurs="0" name="ManufacturerId" type="xs:int" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Product_Manufacturer_Mapping" nillable="true" type="tns:Product_Manufacturer_Mapping" />
+  <xs:complexType name="Manufacturer">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q67="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q67:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowCustomersToSelectPageSize" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CreatedOnUtc" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LimitedToStores" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ManufacturerTemplateId" type="xs:int" />
+          <xs:element minOccurs="0" name="MetaDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaKeywords" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MetaTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSizeOptions" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PictureId" type="xs:int" />
+          <xs:element minOccurs="0" name="PriceRanges" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product_Manufacturer_Mapping" nillable="true" type="tns:ArrayOfProduct_Manufacturer_Mapping" />
+          <xs:element minOccurs="0" name="Published" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SubjectToAcl" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UpdatedOnUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Manufacturer" nillable="true" type="tns:Manufacturer" />
+  <xs:complexType name="ArrayOfProduct_Picture_Mapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product_Picture_Mapping" nillable="true" type="tns:Product_Picture_Mapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct_Picture_Mapping" nillable="true" type="tns:ArrayOfProduct_Picture_Mapping" />
+  <xs:complexType name="Product_Picture_Mapping">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q68="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q68:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Picture" nillable="true" type="tns:Picture" />
+          <xs:element minOccurs="0" name="PictureId" type="xs:int" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Product_Picture_Mapping" nillable="true" type="tns:Product_Picture_Mapping" />
+  <xs:complexType name="Picture">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q69="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q69:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsNew" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PictureBinary" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="Product_Picture_Mapping" nillable="true" type="tns:ArrayOfProduct_Picture_Mapping" />
+          <xs:element minOccurs="0" name="SeoFilename" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Picture" nillable="true" type="tns:Picture" />
+  <xs:complexType name="ArrayOfProduct_ProductAttribute_Mapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product_ProductAttribute_Mapping" nillable="true" type="tns:Product_ProductAttribute_Mapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct_ProductAttribute_Mapping" nillable="true" type="tns:ArrayOfProduct_ProductAttribute_Mapping" />
+  <xs:complexType name="ArrayOfProduct_SpecificationAttribute_Mapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product_SpecificationAttribute_Mapping" nillable="true" type="tns:Product_SpecificationAttribute_Mapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct_SpecificationAttribute_Mapping" nillable="true" type="tns:ArrayOfProduct_SpecificationAttribute_Mapping" />
+  <xs:complexType name="Product_SpecificationAttribute_Mapping">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q70="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q70:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowFiltering" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CustomValue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="ShowOnProductPage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SpecificationAttributeOption" nillable="true" type="tns:SpecificationAttributeOption" />
+          <xs:element minOccurs="0" name="SpecificationAttributeOptionId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Product_SpecificationAttribute_Mapping" nillable="true" type="tns:Product_SpecificationAttribute_Mapping" />
+  <xs:complexType name="SpecificationAttributeOption">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q71="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q71:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product_SpecificationAttribute_Mapping" nillable="true" type="tns:ArrayOfProduct_SpecificationAttribute_Mapping" />
+          <xs:element minOccurs="0" name="SpecificationAttribute" nillable="true" type="tns:SpecificationAttribute" />
+          <xs:element minOccurs="0" name="SpecificationAttributeId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SpecificationAttributeOption" nillable="true" type="tns:SpecificationAttributeOption" />
+  <xs:complexType name="SpecificationAttribute">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q72="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q72:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SpecificationAttributeOption" nillable="true" type="tns:ArrayOfSpecificationAttributeOption" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SpecificationAttribute" nillable="true" type="tns:SpecificationAttribute" />
+  <xs:complexType name="ArrayOfSpecificationAttributeOption">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecificationAttributeOption" nillable="true" type="tns:SpecificationAttributeOption" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecificationAttributeOption" nillable="true" type="tns:ArrayOfSpecificationAttributeOption" />
+  <xs:complexType name="ProductAttribute">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q73="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q73:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product_ProductAttribute_Mapping" nillable="true" type="tns:ArrayOfProduct_ProductAttribute_Mapping" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductAttribute" nillable="true" type="tns:ProductAttribute" />
+  <xs:complexType name="ArrayOfProductVariantAttributeValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductVariantAttributeValue" nillable="true" type="tns:ProductVariantAttributeValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductVariantAttributeValue" nillable="true" type="tns:ArrayOfProductVariantAttributeValue" />
+  <xs:complexType name="ArrayOfIVM_Transaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IVM_Transaction" nillable="true" type="tns:IVM_Transaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIVM_Transaction" nillable="true" type="tns:ArrayOfIVM_Transaction" />
+  <xs:complexType name="IVM_Transaction">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q74="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q74:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CF_Store" nillable="true" type="tns:CF_Store" />
+          <xs:element minOccurs="0" name="CostAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CostPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="RefId" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="TransDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TypeId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVM_Transaction" nillable="true" type="tns:IVM_Transaction" />
+  <xs:complexType name="ArrayOfPOM_PurchaseInvoiceDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POM_PurchaseInvoiceDetail" nillable="true" type="tns:POM_PurchaseInvoiceDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOM_PurchaseInvoiceDetail" nillable="true" type="tns:ArrayOfPOM_PurchaseInvoiceDetail" />
+  <xs:complexType name="POM_PurchaseInvoiceDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q75="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q75:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="POM_PurchaseInvoice" nillable="true" type="tns:POM_PurchaseInvoice" />
+          <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PurchaseInvoiceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="POM_PurchaseInvoiceDetail" nillable="true" type="tns:POM_PurchaseInvoiceDetail" />
+  <xs:complexType name="POM_PurchaseInvoice">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q76="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q76:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CF_Store" nillable="true" type="tns:CF_Store" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditAcctId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="InvoiceDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="InvoiceNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="POM_PurchaseInvoiceDetail" nillable="true" type="tns:ArrayOfPOM_PurchaseInvoiceDetail" />
+          <xs:element minOccurs="0" name="RefNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="POM_PurchaseInvoice" nillable="true" type="tns:POM_PurchaseInvoice" />
+  <xs:complexType name="ArrayOfPOS_SaleOrderDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POS_SaleOrderDetail" nillable="true" type="tns:POS_SaleOrderDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOS_SaleOrderDetail" nillable="true" type="tns:ArrayOfPOS_SaleOrderDetail" />
+  <xs:complexType name="POS_SaleOrderDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q77="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q77:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IVM_Barcode" nillable="true" type="tns:IVM_Barcode" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LineAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LineDiscount" type="xs:int" />
+          <xs:element minOccurs="0" name="POS_SaleOrder" nillable="true" type="tns:POS_SaleOrder" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="SaleOrderId" type="xs:int" />
+          <xs:element minOccurs="0" name="SellUnitPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Seq" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="POS_SaleOrderDetail" nillable="true" type="tns:POS_SaleOrderDetail" />
+  <xs:complexType name="POS_SaleOrder">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q78="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q78:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AeroShippingFee" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CF_Carrier" nillable="true" type="tns:CF_Carrier" />
+          <xs:element minOccurs="0" name="CF_Obj" nillable="true" type="tns:CF_Obj" />
+          <xs:element minOccurs="0" name="CF_SaleReturnReason" nillable="true" type="tns:CF_SaleReturnReason" />
+          <xs:element minOccurs="0" name="CF_SaleSource" nillable="true" type="tns:CF_SaleSource" />
+          <xs:element minOccurs="0" name="CF_Store" nillable="true" type="tns:CF_Store" />
+          <xs:element minOccurs="0" name="CarrierId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ChanelId" type="xs:int" />
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DebitAcctId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountPercent" type="xs:decimal" />
+          <xs:element minOccurs="0" name="FeeAcctId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FeeAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsMasterCard" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OrderNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POS_SaleOrderDetail" nillable="true" type="tns:ArrayOfPOS_SaleOrderDetail" />
+          <xs:element minOccurs="0" name="PrintCount" type="xs:int" />
+          <xs:element minOccurs="0" name="ReceiveMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RefNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReturnMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ReturnReasonId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ShippingCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShippingFee" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="SubTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Users" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="POS_SaleOrder" nillable="true" type="tns:POS_SaleOrder" />
+  <xs:complexType name="CF_Carrier">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q79="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q79:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AcctId" type="xs:int" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POS_SaleOrder" nillable="true" type="tns:ArrayOfPOS_SaleOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CF_Carrier" nillable="true" type="tns:CF_Carrier" />
+  <xs:complexType name="ArrayOfPOS_SaleOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POS_SaleOrder" nillable="true" type="tns:POS_SaleOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOS_SaleOrder" nillable="true" type="tns:ArrayOfPOS_SaleOrder" />
+  <xs:complexType name="CF_SaleReturnReason">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q80="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q80:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POS_SaleOrder" nillable="true" type="tns:ArrayOfPOS_SaleOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CF_SaleReturnReason" nillable="true" type="tns:CF_SaleReturnReason" />
+  <xs:complexType name="CF_SaleSource">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q81="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q81:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="POS_SaleOrder" nillable="true" type="tns:ArrayOfPOS_SaleOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CF_SaleSource" nillable="true" type="tns:CF_SaleSource" />
+  <xs:complexType name="ArrayOfPOM_PurchaseInvoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POM_PurchaseInvoice" nillable="true" type="tns:POM_PurchaseInvoice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOM_PurchaseInvoice" nillable="true" type="tns:ArrayOfPOM_PurchaseInvoice" />
+  <xs:complexType name="GJ_Tran">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q82="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q82:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GJ_TranDetail" nillable="true" type="tns:ArrayOfGJ_TranDetail" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="TypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UpdatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNo" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GJ_Tran" nillable="true" type="tns:GJ_Tran" />
+  <xs:complexType name="ArrayOfCF_Carrier">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CF_Carrier" nillable="true" type="tns:CF_Carrier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCF_Carrier" nillable="true" type="tns:ArrayOfCF_Carrier" />
+  <xs:complexType name="ArrayOfCF_Store">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CF_Store" nillable="true" type="tns:CF_Store" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCF_Store" nillable="true" type="tns:ArrayOfCF_Store" />
+  <xs:complexType name="ArrayOfCF_SaleReturnReason">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CF_SaleReturnReason" nillable="true" type="tns:CF_SaleReturnReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCF_SaleReturnReason" nillable="true" type="tns:ArrayOfCF_SaleReturnReason" />
+  <xs:complexType name="ArrayOfCF_SaleSource">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CF_SaleSource" nillable="true" type="tns:CF_SaleSource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCF_SaleSource" nillable="true" type="tns:ArrayOfCF_SaleSource" />
+</xs:schema>

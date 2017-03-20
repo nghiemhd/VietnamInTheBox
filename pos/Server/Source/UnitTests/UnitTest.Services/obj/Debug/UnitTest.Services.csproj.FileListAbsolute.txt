@@ -1,0 +1,7 @@
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\bin\Debug\UnitTest.Services.dll.config
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\bin\Debug\UnitTest.Services.dll
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\bin\Debug\UnitTest.Services.pdb
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\bin\Debug\Newtonsoft.Json.dll
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\obj\Debug\UnitTest.Services.csprojResolveAssemblyReference.cache
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\obj\Debug\UnitTest.Services.dll
+D:\__Aero\pos\trunk\Server\Source\UnitTests\UnitTest.Services\obj\Debug\UnitTest.Services.pdb

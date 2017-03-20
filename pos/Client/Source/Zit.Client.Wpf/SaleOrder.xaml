@@ -1,0 +1,299 @@
+﻿<UserControl x:Class="Zit.Client.Wpf.SaleOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="900"
+             DataContext="{Binding Source={StaticResource Locator},Path=SaleOrder}"
+             Loaded="UserControl_Loaded"
+             >
+    <Grid Margin="10,10,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="Số ĐH (DH)"/>
+            <TextBox IsEnabled="False"
+                     Width="100"
+                     Text="{Binding Model.OrderNo}"
+                     />
+            <Label Margin="10,0,0,0" Content="Kênh (CN)"/>
+            <ComboBox Width="80" TabIndex="1"
+                      ItemsSource="{Binding 
+                        Source={StaticResource Locator},
+                        Path=Common.SaleChanelList}"
+                      SelectedValuePath="Key"
+                      DisplayMemberPath="Value"
+                      IsEnabled="{Binding Model.IsNew}"
+                      SelectedValue="{Binding Model.ChanelId}"
+                      />
+            <Label Margin="10,0,0,0" Content="Ref (RE)"/>
+            <TextBox IsEnabled="{Binding Model.IsEnableRef}"
+                     Text="{Binding Model.RefNo}"
+                     Width="100"
+                     TabIndex="2"
+                     IsReadOnly="{Binding Model.IsNew,Converter={StaticResource Not}}"
+                     />
+            <Label Margin="10,0,0,0" Content="Đối tượng CN"/>
+            <ComboBox Width="110" TabIndex="1"
+                      ItemsSource="{Binding Objs}"
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="ObjName"
+                      IsEnabled="{Binding Model.IsObjEnable}"
+                      SelectedValue="{Binding Model.ObjId}"
+                      />
+            <Label Margin="10,0,0,0" Content="Nhà VC"/>
+            <ComboBox Width="80" TabIndex="1"
+                      ItemsSource="{Binding Carriers}"
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Code"
+                      IsEnabled="{Binding Model.IsCarrierEnable}"
+                      SelectedValue="{Binding Model.CarrierId}"
+                      />
+            <Label Margin="10,0,0,0" Content="Mã VC"/>
+            <TextBox IsEnabled="{Binding Model.IsEnableShippingCode}"
+                     Text="{Binding Model.ShippingCode}"
+                     Width="100"
+                     TabIndex="2"
+                     />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+                    <Label Margin="10,0,0,0" Content="Nguồn"/>
+                    <ComboBox Width="80" TabIndex="1"
+                      ItemsSource="{Binding SaleSources}"
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Name"
+                      SelectedValue="{Binding Model.SourceId}"
+                      />
+
+                    <Label Margin="10,0,0,0" Content="Lý do trả hàng"/>
+                    <ComboBox Width="80" TabIndex="1"
+                      ItemsSource="{Binding SaleReturnReasons}"
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Name"
+                      IsEnabled="{Binding Model.IsReturn}"
+                      SelectedValue="{Binding Model.ReturnReasonId}"
+                      />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Label Margin="10,0,0,0" Content="Số Điện Thoại (DT)"/>
+                    <TextBox Text="{Binding Model.Mobile}"
+                     Width="120"
+                     TabIndex="3"
+                     />
+                    <Label Margin="10,0,0,0" Content="Tên (TE)"/>
+                    <TextBox 
+                     Text="{Binding Model.CustomerName}"
+                     Width="120"
+                     TabIndex="4"
+                     />
+                    <Label Content="NV Bán Hàng : "/>
+                    <Label Content="{Binding Model.Users}"/>
+                </StackPanel>
+            </Grid>
+            
+            <Label Content="Ghi chú (GC)"/>
+            <TextBox 
+                     Width="280"
+                     Height="80"
+                     Margin="5"
+                     IsTabStop="True"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Visible"
+                     Text="{Binding Model.Desc}"
+                     TabIndex="5"
+                     />
+        </StackPanel>
+
+        <!--Data Grid-->
+
+        <Grid Grid.Row="2"
+              Margin="3,10,3,3"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="0"
+                               Content="Xóa"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="1"
+                               Content="TT"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="2" 
+                               Content="Mã"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="3" 
+                               Content="Tên"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="4" 
+                               Content="Thuộc tính"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="5" 
+                               Content="SL"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="6" 
+                               Content="Đơn giá"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="7" 
+                               Content="CK"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="8" 
+                               Content="Tổng"/>
+        </Grid>
+
+        <Border Grid.Row="3"
+                BorderThickness="0,0,0,1" BorderBrush="Gray"
+                >
+            <ScrollViewer Margin="0,0,0,10">
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding Model.Detail}"
+                          IsTabStop="False"
+                          >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                    <Grid IsEnabled="{Binding IsReturn,Converter={StaticResource Not}}" Margin="3,3,3,3"
+                                      >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button CommandParameter="{Binding Seq}" Command="{Binding RefObj.RemoveDetail}"
+                                    MinWidth="15" Width="15" 
+                                    MinHeight="15" Height="15"          
+                                    Grid.Column="0"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="1"
+                                   Text="{Binding Seq,Converter={StaticResource Number}}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="2" 
+                                   Text="{Binding Barcode}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="3" 
+                                   Text="{Binding Name}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="4" 
+                                   Text="{Binding AttributeDesc}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="5" 
+                                   Text="{Binding Qty,Converter={StaticResource Number},NotifyOnTargetUpdated=True}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="6" 
+                                   Text="{Binding SellUnitPrice,Converter={StaticResource Number}}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="7" 
+                                   Text="{Binding LineDiscount,Converter={StaticResource Number}}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="8" 
+                                   Text="{Binding LineAmount,Converter={StaticResource Number}}"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Row="4"
+                BorderThickness="0,0,0,1" BorderBrush="Gray"
+                Padding="10"
+                HorizontalAlignment="Right"
+                >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <TextBlock FontSize="72" Margin="100,0,100,0" Text="{Binding ModeName}"></TextBlock>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Số SL" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox IsEnabled="False" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="1" Grid.Row="0" Text="{Binding Model.Qty,Converter={StaticResource Number}}"/>
+                    <Label Content="Tổng tiền"  Grid.Column="2" Grid.Row="0"/>
+                    <TextBox IsEnabled="False" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="0" Text="{Binding Model.SubTotal,Converter={StaticResource Number}}"/>
+                    <Label Content="Chiết khấu %" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox IsEnabled="{Binding Model.IsNew}" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="1" Grid.Row="1" Text="{Binding Model.DiscountPercent,Converter={StaticResource Number},UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="Chiết khấu" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox IsEnabled="{Binding Model.IsNew}" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="1" Text="{Binding Model.DiscountAmount,Converter={StaticResource Number},UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label Content="Chiết khấu đơn hàng" Grid.Column="2" Grid.Row="2"/>
+                    <TextBox IsEnabled="False" Width="100" Margin="10,3,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="2" Text="{Binding Model.Discount,Converter={StaticResource Number}}" VerticalAlignment="Top"/>
+
+                    <Label Content="PVC Aero thực trả" Grid.Column="0" Grid.Row="3"/>
+                    <TextBox Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="1" Grid.Row="3" TabIndex="6"
+                         Text="{Binding Model.AeroShippingFee,Converter={StaticResource Number},UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding Model.IsAllowEditAeroFee}"
+                         />
+                    
+                    <Label Content="PVC khách hàng chịu" Grid.Column="2" Grid.Row="3"/>
+                    <TextBox Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="3" TabIndex="6"
+                         Text="{Binding Model.ShippingFee,Converter={StaticResource Number},UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding Model.IsNew}"
+                         />
+                    <Label Content="Là thanh toán thẻ" Grid.Column="0" Grid.Row="4"/>
+                    <CheckBox IsChecked="{Binding Model.IsMasterCard}" Margin="10,6,0,0" Grid.Column="1" Grid.Row="4"/>
+                    <Label Content="Thành tiền" Grid.Column="2" Grid.Row="4"/>
+                    <TextBox IsEnabled="False" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="4" Text="{Binding Model.Amount,Converter={StaticResource Number}}"/>
+                    <Label Content="Nhận tiền khách" Grid.Column="2" Grid.Row="5"/>
+                    <TextBox Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="5" 
+                         Text="{Binding Model.ReceiveMoney,Converter={StaticResource Number},UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding Model.IsNew}"
+                         />
+                    <Label Content="Tiền trả khách" Grid.Column="2" Grid.Row="6"/>
+                    <TextBox IsEnabled="False" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="3" Grid.Row="6" Text="{Binding Model.ReturnMoney,Converter={StaticResource Number}}"/>
+                </Grid>
+
+            </Grid>
+
+
+        </Border>
+
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="10,10,10,0"
+                    >
+            <Button Content="Tạo mới" Command="{Binding NewOrder}"/>
+            <Button Visibility="{Binding Model.IsNew,Converter={StaticResource TrueVis}}" Content="Hoàn tất (Enter)" Command="{Binding Complete}"/>
+            <Button Visibility="{Binding Model.IsNew,Converter={StaticResource FalseVis}}" Content="Cập nhật thông tin" Command="{Binding UpdateInfo}"/>
+            <Button Visibility="{Binding Model.IsNew,Converter={StaticResource FalseVis}}" Content="In" Command="{Binding Print}"/>
+            <Button Content="Trả hàng" Visibility="{Binding Model.IsNew,Converter={StaticResource FalseVis}}" Command="{Binding ReturnOrder}"/>
+        </StackPanel>
+        <CheckBox IsChecked="{Binding Model.IsPaid}" Content="CheckBox" HorizontalAlignment="Left" Margin="43,24,0,0" Grid.Row="4" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label Content="{Binding Model.PaymentDate}" HorizontalAlignment="Left" Margin="33,56,0,0" Grid.Row="4" VerticalAlignment="Top" Visibility="Hidden"/>
+    </Grid>
+</UserControl>

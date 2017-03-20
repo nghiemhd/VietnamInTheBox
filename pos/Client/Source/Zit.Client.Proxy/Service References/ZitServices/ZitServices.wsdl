@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ZitServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects.BusinessModels" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Zit.DataTransferObjects" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Zit.Entity" />
+      <xsd:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects.Enums" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IZitServices_GetAppConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppConfig" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAppConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CheckAndLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAndLogin" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CheckAndLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAndLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetPOSSaleOrderByOrderNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPOSSaleOrderByOrderNo" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetPOSSaleOrderByOrderNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPOSSaleOrderByOrderNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreatePOSOrderDetailByBarcode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePOSOrderDetailByBarcode" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreatePOSOrderDetailByBarcode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePOSOrderDetailByBarcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreateNewPOSOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPOSOrder" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreateNewPOSOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPOSOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_SavePOSOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePOSOrder" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_SavePOSOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePOSOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_SavePOSInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePOSInfo" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_SavePOSInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePOSInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllObj_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllObj" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllObj_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllObjResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllCarrier_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCarrier" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllCarrier_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCarrierResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_UpdatePrintCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrintCount" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_UpdatePrintCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrintCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreateNewTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreateNewTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreateITDetailByBarcode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateITDetailByBarcode" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_CreateITDetailByBarcode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateITDetailByBarcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_SaveInvTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvTransfer" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_SaveInvTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetInvTransferByTransferNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvTransferByTransferNo" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetInvTransferByTransferNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvTransferByTransferNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllStore_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStore" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllStore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_UserCheckTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserCheckTime" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_UserCheckTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserCheckTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetUserByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByName" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetUserByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllSaleReturnReason_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSaleReturnReason" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllSaleReturnReason_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSaleReturnReasonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllSaleSource_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSaleSource" />
+  </wsdl:message>
+  <wsdl:message name="IZitServices_GetAllSaleSource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSaleSourceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IZitServices">
+    <wsdl:operation name="GetAppConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConfigService/GetAppConfig" message="tns:IZitServices_GetAppConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConfigService/GetAppConfigResponse" message="tns:IZitServices_GetAppConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/Login" message="tns:IZitServices_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/LoginResponse" message="tns:IZitServices_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAndLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/CheckAndLogin" message="tns:IZitServices_CheckAndLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/CheckAndLoginResponse" message="tns:IZitServices_CheckAndLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPOSSaleOrderByOrderNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetPOSSaleOrderByOrderNo" message="tns:IZitServices_GetPOSSaleOrderByOrderNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetPOSSaleOrderByOrderNoResponse" message="tns:IZitServices_GetPOSSaleOrderByOrderNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePOSOrderDetailByBarcode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/CreatePOSOrderDetailByBarcode" message="tns:IZitServices_CreatePOSOrderDetailByBarcode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/CreatePOSOrderDetailByBarcodeResponse" message="tns:IZitServices_CreatePOSOrderDetailByBarcode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPOSOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/CreateNewPOSOrder" message="tns:IZitServices_CreateNewPOSOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/CreateNewPOSOrderResponse" message="tns:IZitServices_CreateNewPOSOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/SavePOSOrder" message="tns:IZitServices_SavePOSOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/SavePOSOrderResponse" message="tns:IZitServices_SavePOSOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/SavePOSInfo" message="tns:IZitServices_SavePOSInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/SavePOSInfoResponse" message="tns:IZitServices_SavePOSInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllObj">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetAllObj" message="tns:IZitServices_GetAllObj_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetAllObjResponse" message="tns:IZitServices_GetAllObj_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCarrier">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetAllCarrier" message="tns:IZitServices_GetAllCarrier_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetAllCarrierResponse" message="tns:IZitServices_GetAllCarrier_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrintCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/UpdatePrintCount" message="tns:IZitServices_UpdatePrintCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/UpdatePrintCountResponse" message="tns:IZitServices_UpdatePrintCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/CreateNewTransfer" message="tns:IZitServices_CreateNewTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/CreateNewTransferResponse" message="tns:IZitServices_CreateNewTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateITDetailByBarcode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/CreateITDetailByBarcode" message="tns:IZitServices_CreateITDetailByBarcode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/CreateITDetailByBarcodeResponse" message="tns:IZitServices_CreateITDetailByBarcode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/SaveInvTransfer" message="tns:IZitServices_SaveInvTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/SaveInvTransferResponse" message="tns:IZitServices_SaveInvTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvTransferByTransferNo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetInvTransferByTransferNo" message="tns:IZitServices_GetInvTransferByTransferNo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetInvTransferByTransferNoResponse" message="tns:IZitServices_GetInvTransferByTransferNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetAllStore" message="tns:IZitServices_GetAllStore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetAllStoreResponse" message="tns:IZitServices_GetAllStore_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/UserCheckTime" message="tns:IZitServices_UserCheckTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/UserCheckTimeResponse" message="tns:IZitServices_UserCheckTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetUserByName" message="tns:IZitServices_GetUserByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetUserByNameResponse" message="tns:IZitServices_GetUserByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/UpdateUser" message="tns:IZitServices_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/UpdateUserResponse" message="tns:IZitServices_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSaleReturnReason">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetAllSaleReturnReason" message="tns:IZitServices_GetAllSaleReturnReason_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetAllSaleReturnReasonResponse" message="tns:IZitServices_GetAllSaleReturnReason_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSaleSource">
+      <wsdl:input wsaw:Action="http://tempuri.org/IZitServices/GetAllSaleSource" message="tns:IZitServices_GetAllSaleSource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IZitServices/GetAllSaleSourceResponse" message="tns:IZitServices_GetAllSaleSource_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IZitServices" type="tns:IZitServices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAppConfig">
+      <soap:operation soapAction="http://tempuri.org/IConfigService/GetAppConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAndLogin">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/CheckAndLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPOSSaleOrderByOrderNo">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetPOSSaleOrderByOrderNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePOSOrderDetailByBarcode">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/CreatePOSOrderDetailByBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPOSOrder">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/CreateNewPOSOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSOrder">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/SavePOSOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePOSInfo">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/SavePOSInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllObj">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetAllObj" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCarrier">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetAllCarrier" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrintCount">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/UpdatePrintCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewTransfer">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/CreateNewTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateITDetailByBarcode">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/CreateITDetailByBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvTransfer">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/SaveInvTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvTransferByTransferNo">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetInvTransferByTransferNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStore">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetAllStore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckTime">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/UserCheckTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetUserByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSaleReturnReason">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetAllSaleReturnReason" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSaleSource">
+      <soap:operation soapAction="http://tempuri.org/IZitServices/GetAllSaleSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZitServices">
+    <wsdl:port name="BasicHttpBinding_IZitServices" binding="tns:BasicHttpBinding_IZitServices">
+      <soap:address location="http://localhost:16607/ZitServices.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

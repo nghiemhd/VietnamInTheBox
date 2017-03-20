@@ -1,0 +1,10 @@
+﻿<Window x:Class="Zit.Client.Wpf.MsgBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Thông báo" Height="129" Width="359" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Content="Đóng" HorizontalAlignment="Left" Margin="146,66,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" IsCancel="True"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="333"/>
+
+    </Grid>
+</Window>

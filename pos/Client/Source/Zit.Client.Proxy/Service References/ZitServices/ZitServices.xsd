@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects.BusinessModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects.BusinessModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects.Enums" />
+  <xs:import schemaLocation="http://localhost:16607/ZitServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Zit.Entity" />
+  <xs:complexType name="AppConfigClient">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="AppConfigClient" nillable="true" type="tns:AppConfigClient" />
+  <xs:complexType name="POSSaleOrderModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q1:ObservableObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AeroShippingFee" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CarrierId" nillable="true" type="xs:int" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Zit.BusinessObjects.Enums" minOccurs="0" name="ChanelId" type="q2:SaleChanel" />
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Detail" nillable="true" type="tns:ArrayOfPOSSaleOrderDetailModel" />
+          <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DiscountPercent" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsMasterCard" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ObjId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OrderNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="ReceiveMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RefNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestDataDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ReturnMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ReturnReasonId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ShippingCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShippingFee" type="xs:decimal" />
+          <xs:element minOccurs="0" name="SourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="SubTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Users" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="POSSaleOrderModel" nillable="true" type="tns:POSSaleOrderModel" />
+  <xs:complexType name="ArrayOfPOSSaleOrderDetailModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="POSSaleOrderDetailModel" nillable="true" type="tns:POSSaleOrderDetailModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPOSSaleOrderDetailModel" nillable="true" type="tns:ArrayOfPOSSaleOrderDetailModel" />
+  <xs:complexType name="POSSaleOrderDetailModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q3:ObservableObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttributeDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Barcode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsReturn" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LineAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LineDiscount" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="SaleOrderId" type="xs:int" />
+          <xs:element minOccurs="0" name="SellUnitPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Seq" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="POSSaleOrderDetailModel" nillable="true" type="tns:POSSaleOrderDetailModel" />
+  <xs:complexType name="InventoryTransferModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q4:ObservableObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedUser" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Detail" nillable="true" type="tns:ArrayOfInvenrotyTransferDetailModel" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="StoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="ToStoreId" type="xs:int" />
+          <xs:element minOccurs="0" name="TransferDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TransferNo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InventoryTransferModel" nillable="true" type="tns:InventoryTransferModel" />
+  <xs:complexType name="ArrayOfInvenrotyTransferDetailModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InvenrotyTransferDetailModel" nillable="true" type="tns:InvenrotyTransferDetailModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInvenrotyTransferDetailModel" nillable="true" type="tns:ArrayOfInvenrotyTransferDetailModel" />
+  <xs:complexType name="InvenrotyTransferDetailModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Zit.Entity" base="q5:ObservableObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttributeDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Barcode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BarcodeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+          <xs:element minOccurs="0" name="Qty" type="xs:int" />
+          <xs:element minOccurs="0" name="Seq" type="xs:int" />
+          <xs:element minOccurs="0" name="TransferId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvenrotyTransferDetailModel" nillable="true" type="tns:InvenrotyTransferDetailModel" />
+</xs:schema>

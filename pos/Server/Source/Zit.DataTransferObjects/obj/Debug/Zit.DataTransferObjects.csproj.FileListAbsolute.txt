@@ -1,0 +1,8 @@
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\bin\Debug\Zit.DataTransferObjects.dll
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\bin\Debug\Zit.DataTransferObjects.pdb
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\bin\Debug\Zit.BusinessObjects.dll
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\bin\Debug\Zit.Entity.dll
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\bin\Debug\Zit.BusinessObjects.pdb
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\obj\Debug\Zit.DataTransferObjects.csprojResolveAssemblyReference.cache
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\obj\Debug\Zit.DataTransferObjects.dll
+D:\__Aero\pos\trunk\Server\Source\Zit.DataTransferObjects\obj\Debug\Zit.DataTransferObjects.pdb

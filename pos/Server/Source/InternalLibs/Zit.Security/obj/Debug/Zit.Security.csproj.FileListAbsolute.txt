@@ -1,0 +1,11 @@
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Zit.Security.dll.config
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Zit.Security.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Zit.Security.pdb
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Magnum.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Magnum.xml
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\obj\Debug\Zit.Security.csprojResolveAssemblyReference.cache
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\obj\Debug\Zit.Security.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Security\obj\Debug\Zit.Security.pdb

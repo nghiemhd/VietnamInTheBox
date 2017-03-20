@@ -1,0 +1,5 @@
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Entity\bin\Debug\Zit.Entity.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Entity\bin\Debug\Zit.Entity.pdb
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Entity\bin\Debug\Newtonsoft.Json.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Entity\obj\Debug\Zit.Entity.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Entity\obj\Debug\Zit.Entity.pdb

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application x:Class="Zit.Client.Wpf.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" StartupUri="MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Zit.Client.Wpf.ViewModel" mc:Ignorable="d"
+             Startup="Application_Startup"
+             Exit="Application_Exit"
+             xmlns:converters="clr-namespace:Zit.Client.Wpf.Converters"
+             >
+    <Application.Resources>
+         
+    <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+            <!--Converts-->
+            <converters:NumberConverter x:Key="Number"/>
+            <converters:TrueVisConverter x:Key="TrueVis"/>
+            <converters:FalseVisConverter x:Key="FalseVis"/>
+            <converters:NotConverter x:Key="Not"/>
+            <!---->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="Padding" Value="1,0,0,0"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=IsEnabled}" Value="False">
+                                <Setter Property="Background" Value="LightGray"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="{x:Type ComboBox}">
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="Padding" Value="4,1,0,0"/>
+                    </Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="3"/>
+                        <Setter Property="MinWidth" Value="40"/>
+                        <Setter Property="Padding" Value="10,3,10,3"/>
+                    </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <Style x:Key="Label_Caption" TargetType="Label">
+                        <Setter Property="Background" Value="LightGray"/>
+                        <Setter Property="BorderBrush" Value="Gray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Margin" Value="2,0,0,0"/>
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                    </Style>
+                    <Style x:Key="TextBlock_Content" TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                        <Setter Property="Margin" Value="10,0,10,0"/>
+                        <!--<Style.Triggers>
+                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Color"
+                                                         Duration="0:0:2" From="Red"
+                                                         />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>-->
+                    </Style>
+
+                <Style TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=IsEnabled}" Value="False">
+                        <Setter Property="Background" Value="#FFF3ECEC"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+                <Style TargetType="{x:Type ScrollViewer}">
+                        <Setter Property="OverridesDefaultStyle" Value="True" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ScrollContentPresenter Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                                        <ScrollBar Name="PART_VerticalScrollBar"
+                            HorizontalAlignment="Right"
+                            Opacity="0.6" 
+                            Grid.Column="1"
+                            Value="{TemplateBinding VerticalOffset}"
+                            Maximum="{TemplateBinding ScrollableHeight}"
+                            ViewportSize="{TemplateBinding ViewportHeight}"
+                            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+                                        <ScrollBar Name="PART_HorizontalScrollBar"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal"
+                            Opacity="0.5"
+                            Grid.Row="1"
+                            Value="{TemplateBinding HorizontalOffset}"
+                            Maximum="{TemplateBinding ScrollableWidth}"
+                            ViewportSize="{TemplateBinding ViewportWidth}"
+                            Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary></Application.Resources>
+</Application>

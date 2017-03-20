@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{97F442BD-AC77-4F0C-8A66-9D3D0D289924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.Services", "UnitTests\UnitTest.Services\UnitTest.Services.csproj", "{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7A9E47CD-A4CF-4339-96CD-ADE836364F2F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zit.Client.Proxy", "Zit.Client.Proxy\Zit.Client.Proxy.csproj", "{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zit.Client.Wpf", "Zit.Client.Wpf\Zit.Client.Wpf.csproj", "{D17B189A-0D7D-4C2E-B819-5410FC76B579}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zit.BusinessObjects", "..\..\Server\Source\Zit.BusinessObjects\Zit.BusinessObjects.csproj", "{D240AAE5-E58C-47DA-AA3C-714269EF525C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zit.DataTransferObjects", "..\..\Server\Source\Zit.DataTransferObjects\Zit.DataTransferObjects.csproj", "{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B}.Release|x86.ActiveCfg = Release|Any CPU
+		{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D8FDD5-BC6C-44DA-85C0-1CD7C4E4963F}.Release|x86.ActiveCfg = Release|Any CPU
+		{D17B189A-0D7D-4C2E-B819-5410FC76B579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D17B189A-0D7D-4C2E-B819-5410FC76B579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D17B189A-0D7D-4C2E-B819-5410FC76B579}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D17B189A-0D7D-4C2E-B819-5410FC76B579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D17B189A-0D7D-4C2E-B819-5410FC76B579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D17B189A-0D7D-4C2E-B819-5410FC76B579}.Release|x86.ActiveCfg = Release|Any CPU
+		{D240AAE5-E58C-47DA-AA3C-714269EF525C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D240AAE5-E58C-47DA-AA3C-714269EF525C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D240AAE5-E58C-47DA-AA3C-714269EF525C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D240AAE5-E58C-47DA-AA3C-714269EF525C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D240AAE5-E58C-47DA-AA3C-714269EF525C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D240AAE5-E58C-47DA-AA3C-714269EF525C}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C9A7DE-4FB4-4117-8F9F-D830F53E079E}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90D1D9B4-734C-4A5D-AF1D-64F2BCAE091B} = {97F442BD-AC77-4F0C-8A66-9D3D0D289924}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Caching.5.0.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="Zit.Client.Wpf.InventoryTransfer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="900"
+             DataContext="{Binding Source={StaticResource Locator},Path=InventoryTransfer}"
+             Loaded="UserControl_Loaded"
+             >
+    <Grid Margin="10,10,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="Mã VĐ"/>
+            <TextBox IsEnabled="False"
+                     Width="100"
+                     Text="{Binding Model.TransferNo}"
+                     />
+            <Label Margin="10,0,0,0" Content="Kho chuyển đến" 
+                   VerticalAlignment="Center"/>
+            
+            <ComboBox Width="200" TabIndex="1"
+                      ItemsSource="{Binding Stores}"
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Name"
+                      SelectedValue="{Binding Model.ToStoreId}"
+                      />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label Content="Ghi chú (GC)"/>
+            <TextBox 
+                     Width="300"
+                     Height="80"
+                     Margin="5"
+                     IsTabStop="True"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Visible"
+                     Text="{Binding Model.Desc}"
+                     TabIndex="5"
+                     />
+        </StackPanel>
+
+        <!--Data Grid-->
+
+        <Grid Grid.Row="2"
+              Margin="3,10,3,3"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="0"
+                               Content="Xóa"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="1"
+                               Content="TT"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="2" 
+                               Content="Mã"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="3" 
+                               Content="Tên"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="4" 
+                               Content="Thuộc tính"/>
+            <Label Style="{StaticResource Label_Caption}" Grid.Column="5" 
+                               Content="SL"/>
+        </Grid>
+
+        <Border Grid.Row="3"
+                BorderThickness="0,0,0,1" BorderBrush="Gray"
+                >
+            <ScrollViewer Margin="0,0,0,10">
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding Model.Detail}"
+                          IsTabStop="False"
+                          >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                                    <Grid IsEnabled="{Binding IsReturn,Converter={StaticResource Not}}" Margin="3,3,3,3"
+                                      >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="40"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button CommandParameter="{Binding Seq}" Command="{Binding RefObj.RemoveDetail}"
+                                    MinWidth="15" Width="15" 
+                                    MinHeight="15" Height="15"          
+                                    Grid.Column="0"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="1"
+                                   Text="{Binding Seq,Converter={StaticResource Number}}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="2" 
+                                   Text="{Binding Barcode}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="3" 
+                                   Text="{Binding Name}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="4" 
+                                   Text="{Binding AttributeDesc}"/>
+                                        <TextBlock Style="{StaticResource TextBlock_Content}" Grid.Column="5" 
+                                   Text="{Binding Qty,Converter={StaticResource Number},NotifyOnTargetUpdated=True}"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Row="4"
+                BorderThickness="0,0,0,1" BorderBrush="Gray"
+                Padding="10"
+                HorizontalAlignment="Right"
+                >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <TextBlock FontSize="72" Margin="100,0,100,0" Text="{Binding ModeName}"></TextBlock>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Số SL" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox IsEnabled="False" Width="100" Margin="10,0,0,0" FontWeight="Bold" Grid.Column="1" Grid.Row="0" Text="{Binding Model.Qty,Converter={StaticResource Number}}"/>
+                </Grid>
+
+            </Grid>
+
+
+        </Border>
+
+        <StackPanel Grid.Row="5"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="10,10,10,0"
+                    >
+            <Button Content="Tạo mới" Command="{Binding NewTransfer}"/>
+            <Button Visibility="{Binding Model.IsNew,Converter={StaticResource TrueVis}}" Content="Hoàn tất (Enter)" Command="{Binding Complete}"/>
+            <Button Visibility="{Binding Model.IsNew,Converter={StaticResource FalseVis}}" Content="In" Command="{Binding Print}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4865778b-f778-4fa2-a408-10f66c5d6ae5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:16607/ZitServices.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ZitServices.xsd" MetadataType="Schema" ID="a1233f41-0415-4b95-a2ba-abc3f8d30a05" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd2" />
+    <MetadataFile FileName="ZitServices6.xsd" MetadataType="Schema" ID="a5187a25-0960-4515-816f-06d550aa7b26" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd6" />
+    <MetadataFile FileName="ZitServices1.xsd" MetadataType="Schema" ID="9ead7547-0426-4dc7-a454-0fd7a6d306be" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd4" />
+    <MetadataFile FileName="ZitServices7.xsd" MetadataType="Schema" ID="55ce2a53-02ac-453f-8998-2bae61dae192" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd7" />
+    <MetadataFile FileName="ZitServices.wsdl" MetadataType="Wsdl" ID="ec2991d4-5236-42c6-8467-74151c02b30c" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?wsdl" />
+    <MetadataFile FileName="ZitServices5.xsd" MetadataType="Schema" ID="717b5e85-3091-4b3a-b4ac-f2a4e65ff4ba" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd5" />
+    <MetadataFile FileName="ZitServices2.xsd" MetadataType="Schema" ID="040d8d81-8c6e-4d9e-a3ad-3bec19675436" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd0" />
+    <MetadataFile FileName="ZitServices.disco" MetadataType="Disco" ID="53bccbf3-d140-4334-bacc-0d7b842bde51" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?disco" />
+    <MetadataFile FileName="ZitServices4.xsd" MetadataType="Schema" ID="65030c55-2782-4fe6-b3ef-d9651b7fdb66" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd3" />
+    <MetadataFile FileName="ZitServices3.xsd" MetadataType="Schema" ID="6559ccbb-6e7a-4173-bb4e-e74207975732" SourceId="1" SourceUrl="http://localhost:16607/ZitServices.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

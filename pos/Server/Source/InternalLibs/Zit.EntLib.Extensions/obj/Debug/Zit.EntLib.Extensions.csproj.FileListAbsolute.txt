@@ -1,0 +1,11 @@
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Zit.EntLib.Extensions.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Zit.EntLib.Extensions.pdb
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.Unity.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.Unity.xml
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\obj\Debug\Zit.EntLib.Extensions.dll
+D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.EntLib.Extensions\obj\Debug\Zit.EntLib.Extensions.pdb
