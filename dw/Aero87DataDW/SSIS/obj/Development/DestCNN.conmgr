@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DestCNN"
+  DTS:DTSID="{07678655-5789-4C4A-B5B2-E03246B47C87}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[User::Dest]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=(local);User ID=forsync;Initial Catalog=aero87dw;Provider=SQLNCLI10.1;Persist Security Info=True;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwJBuUDirgkmGoXtByWVl7gAAAAACAAAAAAAQZgAAAAEAACAAAAALmibuljdVPcDZQFLRqplqU316giyNlUL9+9WzuMMOiQAAAAAOgAAAAAIAACAAAAB/FIFZGYmiQ6UYmTvSGKsT2fr1kanLj0IxPJNH5ueYY4AAAAB7Trha4WwQuAo/9gvnJ7IJQ2u/Y6iZuq0RS+Z5qji+5GbFjLhpNRSvo9jZhRBg+BTC8Qm/57xQ33XaifAJMrslCAgLwBqpmtoC6cCu9nDXI8VoP+0KpSAqk8FWw8gftbZpEHWXiyt8RkrpxrgpG/0gQ+bKV9AgWpF9nQQUNlLJ8kAAAACX++RyZzYdlkC1MwigWfJTpH8Dk+7G3AeTtZ4O+Kpy0Pi70+iQQGbRHf7W5hXillhQDe18veBM/pA74qKPnKl9</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

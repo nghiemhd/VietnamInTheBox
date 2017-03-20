@@ -1,0 +1,29 @@
+<AnalysisServicesUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>Aero87dw</Id>
+            <Name>Aero87dw</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPdpMhevrV0mP2/KShc8/iQAAAAASAAAAQQBlAHIAbwA4ADcAZAB3AAAAEGYAAAABAAAgAAAA0eN3SoNN9ovC9GG0SAsqT0v5s7X6HPIPDlOJWjisd7AAAAAADoAAAAACAAAgAAAAInlS5EeBjuoCyhNNnUrM00rRobxagQmt+iUlaV0ed1IQAAAAvGqd0KbThrVUkJx2TX3cdEAAAAAwrzV0QJvgl3Kis0HOX0T+MuNJ5CbxBhrMFAlUK9I11vRVFjuUr84aWb0admjYZ113efCJ7jDe+XGNPWdAK0C6</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>Aero87dw</Id>
+            <Name>Aero87dw</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPdpMhevrV0mP2/KShc8/iQAAAAASAAAAQQBlAHIAbwA4ADcAZAB3AAAAEGYAAAABAAAgAAAA6L27XFMtrTXuu3QSAu3BIdVv56wLd22vMznuzGyErBQAAAAADoAAAAACAAAgAAAArYX00mVHhUNgRDTurBv/WUEw+8/p6LhCWjqp7ts/TFggAAAAczFr3gqM1Bf2wWlXt2XTDTlALvt+nCimEvjFxcTMWUpAAAAAaeKOFadU3qTHwbfzufeZQOKL/XmDZ7gQCsj0Pyh2P426WdySCmS4PrfXRFTUOiNhuKGAWvd/wM0gf6bVgRizFQ==</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <TargetServer>localhost</TargetServer>
+        <TargetDatabase>AeroSSAS</TargetDatabase>
+        <StartObject>
+          <ObjectId></ObjectId>
+          <ObjectType>Current</ObjectType>
+        </StartObject>
+      </Options>
+    </Configuration>
+  </Configurations>
+</AnalysisServicesUserConfiguration>

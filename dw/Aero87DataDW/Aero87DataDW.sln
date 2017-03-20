@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS", "SSIS\SSIS.dtproj", "{F6F5D190-37BE-41AB-8678-8A523C4F9A6B}"
+EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "SSAS", "SSAS\SSAS.dwproj", "{224992D0-AB6A-41B0-B0EA-CC70342E820B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6F5D190-37BE-41AB-8678-8A523C4F9A6B}.Development|Default.ActiveCfg = Development
+		{F6F5D190-37BE-41AB-8678-8A523C4F9A6B}.Development|Default.Build.0 = Development
+		{224992D0-AB6A-41B0-B0EA-CC70342E820B}.Development|Default.ActiveCfg = Development
+		{224992D0-AB6A-41B0-B0EA-CC70342E820B}.Development|Default.Build.0 = Development
+		{224992D0-AB6A-41B0-B0EA-CC70342E820B}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
