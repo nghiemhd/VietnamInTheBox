@@ -1,9 +1,0 @@
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\bin\Debug\Zit.Utils.dll
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\bin\Debug\Zit.Utils.pdb
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\bin\Debug\ImageResizer.dll
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\bin\Debug\Newtonsoft.Json.dll
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\bin\Debug\ImageResizer.xml
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\bin\Debug\Newtonsoft.Json.xml
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\obj\Debug\Zit.Utils.csprojResolveAssemblyReference.cache
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\obj\Debug\Zit.Utils.dll
-D:\__Aero\pos\trunk\Server\Source\InternalLibs\Zit.Utils\obj\Debug\Zit.Utils.pdb

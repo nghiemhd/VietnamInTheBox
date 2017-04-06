@@ -1,5 +1,0 @@
-D:\__Aero\pos\trunk\Server\Source\Zit.BusinessObjects\bin\Debug\Zit.BusinessObjects.dll
-D:\__Aero\pos\trunk\Server\Source\Zit.BusinessObjects\bin\Debug\Zit.BusinessObjects.pdb
-D:\__Aero\pos\trunk\Server\Source\Zit.BusinessObjects\bin\Debug\Zit.Entity.dll
-D:\__Aero\pos\trunk\Server\Source\Zit.BusinessObjects\obj\Debug\Zit.BusinessObjects.dll
-D:\__Aero\pos\trunk\Server\Source\Zit.BusinessObjects\obj\Debug\Zit.BusinessObjects.pdb
