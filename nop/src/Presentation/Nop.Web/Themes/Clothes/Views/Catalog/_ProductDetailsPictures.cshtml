@@ -1,0 +1,81 @@
+﻿@model ProductDetailsModel
+@using Nop.Web.Models.Catalog;
+@{
+    Html.AddScriptParts("~/Scripts/slimbox2.js");
+
+    int productPerRow = 4;
+}
+<div class="gallery">
+    <div class="picture">
+        @if (Model.DefaultPictureZoomEnabled)
+        {
+            <a href="@Model.DefaultPictureModel.FullSizeImageUrl" data-gallery="lightbox-pd" title="@Model.Name">
+                <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" />
+            </a>
+        }
+        else
+        {
+            <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" />
+        }
+        @if(Model.DefaultPictureModel.IsDiscount)
+        {
+                <div class="sale-icon">@Model.DefaultPictureModel.DiscountPercent</div>
+        }
+        @if (Model.DefaultPictureModel.IsOutOfStock)
+        {
+                <div class="outstock-icon"></div>
+        }
+        else
+        {
+                <div id="outStockIcon"></div>
+        }
+    </div>
+    @if (Model.PictureModels.Count > 1)
+    {
+        <div class="picture-thumbs">
+            @for (int i = 0; i < Model.PictureModels.Count; i++)
+            {
+                var picture = Model.PictureModels[i];
+
+                if (i % productPerRow == 0)
+                {
+                @Html.Raw("<div>")
+                }
+                <a href="@picture.FullSizeImageUrl" data-gallery="lightbox-p" title="@Model.Name">
+                    <img src="@picture.ImageUrl" alt="@picture.AlternateText" title="@picture.Title" />
+                </a>                 
+                if ((i % productPerRow == (productPerRow - 1)) ||
+                    //last image
+                    (i == (Model.PictureModels.Count - 1)))
+                {
+                @Html.Raw("</div>")
+                }
+            }
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var h = $('.product-details-page .product-name').height();
+        if (h > 42) {
+            $('.product-details-page .overview').addClass('pl');
+            $('.product-details-page .gallery').addClass('pl');
+        }
+
+        if ('@Model.DefaultPictureModel.IsOutOfStock' == 'False') {
+            var actionUrl = '@Url.Action("GetInventoryQuantity", "Catalog")';
+            var data = { productId: '@Model.Id' };
+            $.post(actionUrl, data)
+            .done(function (json) {
+                if (json != null && json == 0) {
+                    $("#outStockIcon").addClass("outstock-icon");
+                }
+            })
+            .fail(function (jqxhr, textStatus, error) {
+                var err = textStatus + ", " + error;
+                console.log("Request Failed: " + err);
+            });
+        }
+    });
+</script>

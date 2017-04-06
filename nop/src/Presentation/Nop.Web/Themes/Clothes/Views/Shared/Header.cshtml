@@ -1,0 +1,117 @@
+﻿@{
+    Html.AppendScriptParts("~/Themes/Clothes/Scripts/jquery.dd.min.js");
+}
+<div id="divcontact" style="display:none">
+    <a class="skype" href="skype:aero87.vn?chat" title="Liên hệ chúng tôi bằng skype">
+        <img src="~/Themes/Clothes/Content/images/skype40.jpg"/>
+    </a>
+    <a class="yahoo" href="ymsgr:sendIM?aero87vn" title="Liên hệ chúng tôi bằng yahoo">
+        <img src="~/Themes/Clothes/Content/images/yahoo40.png"/>
+    </a>
+</div>
+<div id="scroll-top" style="display: block;" title="Lên đầu trang"></div>
+<div class="header">
+    @Html.Widget("header")
+    <div class="header-logo">
+        <a href="@Url.RouteUrl("HomePage")" class="logo">&nbsp; </a>
+        <div class="call-wrapper">
+            <div class="call">
+				<span class="message">Hổ trợ</span>
+				<span class="phone">(08)668 000 55</span>
+				<span class="message"> - Hotline</span>
+				<span class="phone">0903 090 357</span>
+				<span class="message"> - Hổ trợ đặt hàng</span>
+				<span class="phone">(08)626 106 65</span>
+			</div>
+        </div>
+    </div>
+    <div class="header-camket">
+        <div class="header-safe">
+            <div>
+                <a href="/t/cam_ket">Cam kết hàng chính hãng</a>
+                <a href="/t/tra_hang_doi_hang">Đổi trả hàng trong 7 ngày</a>
+            </div>
+        </div>
+        <div class="header-shipping">
+            <a href="/t/mien_phi_giao_hang">Miễn phí giao hàng trên toàn quốc</a>
+        </div>
+        <div class="header-usa">
+            <a href="/t/COD">Hỗ trợ thanh toán khi nhận hàng</a>
+        </div>
+        <div class="header-search">
+            @Html.Action("SearchBox", "Catalog")
+        </div>
+    </div>
+    @*<div class="header-fb-like">
+        <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FAero87.vn&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+    </div>*@
+    @*<div class="call-wrapper">
+        @Html.Action("Call", "ThemeHelperClothes")
+    </div>
+    <div class="header-selectors-wrapper">
+        <div class="header-shoppingcart-wrapper">
+            @Html.Action("FlyoutShoppingCart", "ShoppingCart")
+            @Html.Action("ShoppingCartBox", "ThemeHelperClothes")
+        </div>
+        <div class="tax-display-type-selector">
+            @Html.Action("TaxTypeSelector", "Common")
+        </div>
+        <div class="currency-selector">
+            @Html.Action("CurrencySelector", "Common")
+        </div>
+        <div class="language-selector">
+            @Html.Action("LanguageSelector", "Common")
+        </div>
+        @Html.Widget("header_selectors")
+    </div>*@
+    <div class="header-links-wrapper">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.get('@Url.Action("HeaderLinks","ThemeHelperClothes")', function (data) {
+                    var adminHtml = $(data).find('.admin-header-links').parent().html();
+                    $('.master-wrapper-page').before(adminHtml);
+                    $('.header-links-wrapper').html(data);
+                });
+            });
+        </script>
+        @*@Html.Action("HeaderLinks", "ThemeHelperClothes")*@
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#scroll-top').hide();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() < 300) {
+            $('#scroll-top').fadeOut();
+        } else {
+            $('#scroll-top').fadeIn();
+        }
+    });
+    $('#scroll-top').on('click', function () {
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
+        return false;
+    });
+
+    $(document).ready(function (e) {
+
+        var currentTime = new Date();
+        var time = currentTime.getHours() * 100 + currentTime.getMinutes();
+        
+        if (time >= 900 && time <= 2130) {
+            $('#divcontact').show();
+            $('#divcontact img').mouseover(function () {
+                $(this).fadeTo('fast', 1);
+            });
+
+            $('#divcontact img').mouseout(function () {
+                $(this).fadeTo('fast', 0.5);
+            });
+        }
+
+        try {
+            $(".header-selectors-wrapper select").msDropDown();
+        } catch (e) {
+            alert(e.message);
+        }
+    });
+</script>

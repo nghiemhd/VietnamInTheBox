@@ -1,0 +1,48 @@
+﻿@model IList<ProductOverviewModel>
+
+@using Nop.Web.Models.Catalog;
+@if (Model.Count > 0)
+{
+    <div class="product-grid bestsellers">
+        <div class="title">
+            <strong>@T("Bestsellers")</strong>
+        </div>
+        @if(Model.Count > 4)
+        {
+            <ul class="homepage-bestsellers-slider">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <div class="item-box">
+                            @Html.Partial("_ProductBox", item)
+                        </div>
+                    </li>
+                }
+            </ul>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.homepage-bestsellers-slider').bxSlider({
+                        autoStart: false,
+                        speed: 1000,
+                        prevText: "",
+                        nextText: "",
+                        pager: false,
+                        maxSlides: 4,
+                        moveSlides: 4,
+                        minSlides: 4,
+                        slideWidth: 220
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+            <div class="item-box">
+                @Html.Partial("_ProductBox", item)
+            </div>
+            }
+        }
+    </div>
+}

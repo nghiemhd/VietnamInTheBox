@@ -1,0 +1,53 @@
+﻿@model IList<ProductOverviewModel>
+@{
+    Html.AddScriptParts("~/Themes/Clothes/Scripts/jquery.bxslider.min.js");
+}
+@using Nop.Web.Models.Catalog;
+@if (Model.Count > 0)
+{
+    <div class="related-products-grid product-grid">
+        <div class="title">
+            <strong>@T("Products.RelatedProducts")</strong>
+        </div>
+        @if(Model.Count > 3)
+        {
+            <ul class="related-product-slider">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <div class="item-box">
+                            @Html.Partial("_ProductBox", item)
+                        </div>
+                    </li>
+                }
+            </ul>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.related-product-slider').bxSlider({
+                        autoStart: true,
+                        autoHover: true,
+                        speed: 1000,
+                        prevText: "",
+                        nextText: "",
+                        auto: true,
+                        pause: 5000,
+                        pager: false,
+                        maxSlides: 3,
+                        moveSlides: 3,
+                        minSlides: 3,
+                        slideWidth: 220
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+            <div class="item-box">
+                @Html.Partial("_ProductBox", item)
+            </div>
+            }
+        }
+    </div>
+}

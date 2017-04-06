@@ -1,0 +1,359 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Nop.Admin.Controllers
+
+@{
+    var gridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSize;
+    
+    //page title
+    ViewBag.Title = "Quản lý mua hàng";
+}
+
+@model Nop.Admin.Models.Aero87.PurchaseInvoiceSearch
+
+<div class="section-header">
+    <div class="title">
+        Danh sách đơn hàng mua
+    </div>
+    <div class="options">
+        
+    </div>
+</div>
+
+<table width="100%">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.FromDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.FromDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ToDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.ToDate)
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.StoreId):
+            </td>
+            <td class="adminData">
+                @Html.DropDownList("StoreId", Model.Stores)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.PIStatus):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListForEnum(model => Model.PIStatus,typeof(Nop.Core.Domain.Aero87.PIStatus), new DropDownItem { Text = "---Tất cả---" })
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.InvoiceNo):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.InvoiceNo)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.RefNo):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.RefNo)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ProductCode):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.ProductCode)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Barcode):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.Barcode)
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="button" id="search-purchaseinvoices" class="t-button" value="Tìm" />
+            </td>
+        </tr>
+</table>
+<p>
+</p>
+<table class="adminContent">
+    <tr>
+        <td>
+            @(Html.Telerik().Grid<Nop.Core.Domain.Aero87.PurchaseInvoicesResult>()
+                    .Name("purchaseinvoices-grid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.Id)
+                        .Filterable(false)
+                        .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= Id #>' class='checkboxGroups'/>")
+                        .Title("<input id='mastercheckbox' type='checkbox'/>")
+                        .Width(50)
+                        .HtmlAttributes(new { style = "text-align:center" })
+                        .HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Bound(x => x.StoreCode).Title("CH");
+                        columns.Bound(x => x.InvoiceNo).Title("Mã HĐ");
+
+                        if (ViewBag.IsAd)
+                        {
+                            columns.Bound(x => x.PIStatusName).Title("Tình trạng").ClientTemplate("<input type=button class='t-button' onclick='release(this,<#= Id#>);' value='<#= PIStatusName#>'/>");
+                        }
+                        else
+                        {
+                            columns.Bound(x => x.PIStatusName).Title("Tình trạng");
+                        }
+                        
+                        columns.Bound(x => x.InvoiceDate).Width(150).Title("Ngày HĐ");
+                        columns.Bound(x => x.RefNo).Title("CT liên hệ");
+                        if (ViewBag.IsAd)
+                        {
+                            columns.Bound(x => x.Amount).Format("{0:N0}").Title("Tổng tiền");
+                        }
+                        columns.Bound(x => x.Qty).Title("Tổng lượng").Format("{0:N0}").FooterTemplate(
+                                                            "<table><caption><strong>Tính tổng:</strong></caption>" +
+                                                            "<tr><td>Tổng lượng: </td><td  align='right'><span id=\"aggregator-SumQty-block\"></span></td><tr>" +
+                                                             (ViewBag.IsAd?"<tr><td>Tổng tiền: </td><td  align='right'><span id=\"aggregator-SumAmount-block\"></span></td><tr>":"")
+                                                             + "</table>"
+                                );
+                        columns.Bound(x => x.CreatedDate).Title("Ngày tạo");
+                        columns.Bound(x => x.Desc).Title("Diễn giải");
+
+                    })
+                            .DetailView(m => m.ClientTemplate(
+                                Html.Telerik().Grid<Nop.Core.Domain.Aero87.PurchaseInvoiceDetailLinesResult>()
+                                .Name("orderdetail-grid<#= Id #>")
+                                .Columns(columns =>
+                                    {
+                                        columns.Bound(si => si.PictureUrl).Title("").ClientTemplate("<img alt='<#= Id #>' src='<#= PictureUrl #>' />");
+                                        columns.Bound(si => si.Name).Title("Tên sản phẩm");
+                                        columns.Bound(si => si.Barcode).Title("Mã vạch");
+                                        columns.Bound(si => si.Qty).Title("Số lượng");
+                                        if (ViewBag.IsAd)
+                                        {
+                                            columns.Bound(si => si.Price).Title("Giá").Format("{0:N0}");
+                                            columns.Bound(si => si.Amount).Title("Tổng").Format("{0:N0}");
+                                        }
+                                        columns.Bound(si => si.AttributeDesc).Title("Thuộc tính");
+                                    })
+                                .DataBinding(dataBinding => dataBinding.Ajax()
+                                         .Select("PurchaseInvoiceGridDetail", "Aero87", new
+                                         {
+                                             id = "<#= Id #>"
+                                         }))
+                                .Pageable(settings => settings.PageSize(gridPageSize).Position(GridPagerPosition.Both))
+                                .ToHtmlString()
+                                )
+                             )
+                     .Pageable(settings => settings.PageSize(gridPageSize).Position(GridPagerPosition.Both))
+                     .DataBinding(dataBinding => dataBinding.Ajax().Select("PurchaseInvoicesList", "Aero87"))
+                     .ClientEvents(events => events.OnDataBinding("onDataBinding").OnDataBound("onDataBound").OnComplete("onComplete"))
+                     .EnableCustomBinding(true))
+        </td>
+    </tr>
+</table>
+
+@{Html.Telerik().Window()
+        .Name("approve-window")
+        .Title("Duyệt Hóa Đơn Mua Hàng")
+        .Content(@<text>
+    @using (Html.BeginForm("ApprovePurchaseOrder", "Aero87", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    {
+        @Html.Hidden("InvoiceId")
+        <table style="text-align: left;">
+            <tr>
+                <td>
+                    Tài khoản ghi có:
+                </td>
+                <td>
+                    @(Html.Telerik().ComboBox()
+                        .Name("CreditAcctId")
+                        .Filterable(m => m.FilterMode(AutoCompleteFilterMode.StartsWith))
+                        .DropDownHtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .HtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .AutoFill(true)
+                        .DataBinding(m => m.Ajax().Cache(true).Select("AcctAjax","Aero87")))
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                   Đối tượng công nợ (nếu đòi hỏi):
+                </td>
+                <td>
+                    @(Html.Telerik().ComboBox()
+                        .Name("ObjId")
+                        .Filterable(m => m.FilterMode(AutoCompleteFilterMode.StartsWith))
+                        .DropDownHtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .HtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .AutoFill(true)
+                        .DataBinding(m => m.Ajax().Cache(true).Select("ObjAjax","Aero87")))
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                   Diễn giải:
+                </td>
+                <td>
+                    @Html.TextArea("Desc")
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="t-button" value="Duyệt" />
+                </td>
+            </tr>
+        </table>
+    }
+    </text>)
+        .Width(400)
+        .Height(245)
+        .Draggable(true)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+
+<script type="text/javascript">
+
+    function release(obj,invoiceId) {
+        if(obj.value == 'Đã duyệt')
+        {
+            $.post('@Url.Action("UnPostPurchaseInvoice", "Aero87")' + '/' + invoiceId, function (rp) {
+                if (!rp.IsOke) alert(rp);
+                $('#search-purchaseinvoices').trigger('click');
+            });
+            return false;
+        }
+        $('#approve-window').find('#InvoiceId').val(invoiceId);
+        $('#approve-window').data('tWindow').center().open();
+    }
+
+        var selectedIds = [];
+
+        $(document).ready(function () {
+
+            $('#approve-window').find('form').submit(function () {
+                var data = $(this).serializeArray();
+                $.post('@Url.Action("ApprovePurchaseInvoice", "Aero87")', data, function (rp) {
+                    if (!rp.IsOke) alert(rp);
+                    $('#approve-window').data('tWindow').close();
+                    $('#search-purchaseinvoices').trigger('click');
+                });
+                return false;
+            });
+
+            //search button
+            $('#search-purchaseinvoices').click(function () {
+                //search
+                var grid = $('#purchaseinvoices-grid').data('tGrid');
+                grid.currentPage = 1; //new search. Set page size to 1
+                grid.ajaxRequest();
+                //clear selected checkboxes
+                $('.checkboxGroups').attr('checked', false).change();
+                selectedIds = [];
+                return false;
+            });
+
+           
+
+            $('#mastercheckbox').click(function () {
+                $('.checkboxGroups').attr('checked', $(this).is(':checked')).change();
+            });
+
+            //wire up checkboxes. 
+            $('#purchaseinvoices-grid').on('change', 'input[type=checkbox][id!=mastercheckbox]', function (e) {
+                var $check = $(this);
+                if ($check.is(":checked") == true) {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked == -1) {
+                        //add id to selectedIds.  
+                        selectedIds.push($check.val());
+                    }
+                }
+                else {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked > -1) {
+                        //remove id from selectedIds.  
+                        selectedIds = $.grep(selectedIds, function (item, index) {
+                            return item != $check.val();
+                        });
+                    }
+                }
+                updateMasterCheckbox();
+            });
+        });
+
+        function onDataBinding(e) {
+            var searchModel = {
+                FromDate: $('#@Html.FieldIdFor(model => model.FromDate)').val(),
+                ToDate: $('#@Html.FieldIdFor(model => model.ToDate)').val(),
+                StoreId: $('#@Html.FieldIdFor(model => model.StoreId)').val(),
+                PIStatus: $('#@Html.FieldIdFor(model => model.PIStatus)').val(),
+                InvoiceNo: $('#@Html.FieldIdFor(model => model.InvoiceNo)').val(),
+                RefNo: $('#@Html.FieldIdFor(model => model.RefNo)').val(),
+                ProductCode: $('#@Html.FieldIdFor(model => model.ProductCode)').val(),
+                Barcode: $('#@Html.FieldIdFor(model => model.Barcode)').val()
+            };
+            e.data = searchModel;
+        }
+
+        var aggs = null;
+
+        function onDataBound(e) {
+            $('#purchaseinvoices-grid input[type=checkbox][id!=mastercheckbox]').each(function () {
+                var currentId = $(this).val();
+                var checked = jQuery.inArray(currentId, selectedIds);
+                //set checked based on if current checkbox's value is in selectedIds.  
+                $(this).attr('checked', checked > -1);
+            });
+
+            updateMasterCheckbox();
+
+            //Update Agg
+            for (var key in aggs) {
+                $('#aggregator-SumAmount-block').text(aggs['SumAmount']);
+                $('#aggregator-SumQty-block').text(aggs['SumQty']);
+            }
+
+            //$('#purchaseinvoices-grid input[value="Đã duyệt"]').prop('disabled', true);
+        }
+
+        function onComplete(e) {
+            var result = e.response;
+            if (result) {
+                aggs = e.response["aggregates"];
+            }
+        }
+
+        function updateMasterCheckbox() {
+            var numChkBoxes = $('#purchaseinvoices-grid input[type=checkbox][id!=mastercheckbox]').length;
+            var numChkBoxesChecked = $('#purchaseinvoices-grid input[type=checkbox][checked][id!=mastercheckbox]').length;
+            $('#mastercheckbox').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
+        }
+    </script>  

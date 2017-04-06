@@ -1,0 +1,217 @@
+﻿@model ProductDetailsModel
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Models.Catalog;
+@using Nop.Core.Domain.Orders;
+@{
+    Layout = "~/Views/Shared/_ColumnsTwoNoFb.cshtml";
+
+    //title, meta
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);
+
+    var canonicalUrlsEnabled = EngineContext.Current.Resolve<SeoSettings>().CanonicalUrlsEnabled;
+    if (canonicalUrlsEnabled)
+    {
+        var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, this.Request.Url.Scheme);
+        Html.AddCanonicalUrlParts(productUrl);
+    }
+}
+
+@{Html.AddScriptParts("~/Scripts/jquery.fancybox-1.3.4.pack.js");
+Html.AddCssFileParts("~/Content/fancybox/jquery.fancybox-1.3.4.css");
+}
+
+<!--product breadcrumb-->
+@Html.Action("ProductBreadcrumb", "Catalog", new { productId = Model.Id })
+<div class="page product-details-page">
+    <div class="page-body">
+        @Html.Widget("productdetails_top")
+        @using (Html.BeginRouteForm("Product", new { SeName = Model.SeName }, FormMethod.Post, new { id = "product-details-form" }))
+        {
+            <div itemscope itemtype="http://schema.org/Product" data-productid="@Model.Id">
+                <div class="product-essential">
+                    @Html.Widget("productdetails_before_pictures")
+                    <!--product pictures-->
+                    @Html.Partial("_ProductDetailsPictures", Model)
+                    @Html.Widget("productdetails_after_pictures")
+                    <div class="overview">
+                        <div class="product-name">
+                            <h1 itemprop="name">
+                                @Model.Name
+                            </h1>
+                        </div>
+
+                        <div class="shopcontactinfo">
+                            <a href="~/lien_he" target="_blank" class="contactlink">
+                                <span class="mapicon"></span>
+                                <span class="maptext">Cửa hàng</span>
+
+                                <span class="calltext">(08)668 000 55 0903 090 357</span>
+                                <span class="callicon"></span>
+                                <span class="add">665 Trần Hưng Đạo, P.1, Quận 5, HCM</span>
+								<span class="add">165 Cách Mạng Tháng 8, P.5, Quận 3, HCM</span>
+                                <hr />
+                            </a>
+                        </div>
+                        <div class="productinfo">
+                            <div class="productfrom">
+                                <a title="Cam kết nhập khẩu từ Mỹ" target="_blank" href="~/t/cam_ket" class="property">
+                                    <span class="label">Xuất xứ</span>
+                                    <span class="value flag"></span>
+                                </a>
+                                <a target="_blank" href="@Url.RouteUrl("Manufacturer", new { SeName = Model.ManufactureSeName })" title="Cam kết chính hãng" class="property end">
+                                    <span class="label">Hiệu</span>
+                                    <span class="value text">@Model.ManufactureName</span>
+                                </a>
+                            </div>
+                            <div class="producttrust">
+                                <p>- <a target="_blank" href="~/t/cam_ket">Cam kết chính hãng</a></p>
+                                <p>- <a target="_blank" href="~/t/tra_hang_doi_hang">Đổi trả trong vòng 7 ngày</a></p>
+                                <p>- <a target="_blank" href="~/t/mien_phi_giao_hang">Giao hàng miễn phí (*)</a></p>
+                                <p>- <a target="_blank" href="~/t/COD">Thanh toán khi nhận hàng</a></p>
+                            </div>
+                            <div class="productattribute">
+                                <span class="caption">Giá</span>
+                                <span class="price"/>
+                                    @if (!String.IsNullOrWhiteSpace(Model.ProductPrice.PriceWithDiscount))
+                                    {
+                                        <span class="oldprice">@(Model.ProductPrice.Price)</span><span>&nbsp;&nbsp;</span>
+                                    }
+                                    <span>@(String.IsNullOrWhiteSpace(Model.ProductPrice.PriceWithDiscount) ? Model.ProductPrice.Price : Model.ProductPrice.PriceWithDiscount)</span>
+                            </div>
+                            <div class="productattribute">
+                                <span class="caption">Cửa hàng còn sản phẩm này</span>
+                                <div class="cfstore properties">
+                                </div>
+                            </div>
+
+                            @{
+                                var promotionDesc = Html.Action("TopicBlock", "Topic", new { systemName = "PromotionShortDesc" });
+                            }
+
+                            @if (!String.IsNullOrWhiteSpace(promotionDesc.ToString()))
+                            {
+                                <div class="productattribute">
+                                    <span class="caption">Thông tin khuyến mãi</span>
+                                    <div class="promotioninfo">
+                                        @Html.Action("TopicBlock", "Topic", new { systemName = "PromotionShortDesc" })
+                                    </div>
+                                </div>
+                            }
+                            <div class="productattribute">
+                                <span class="caption">Chọn thông tin</span><br />
+                                <div class="properties">
+
+                                    @foreach (var attribute in Model.ProductVariantAttributes)
+                                    {
+                                        string controlId = string.Format("product_attribute_{0}_{1}_{2}", attribute.ProductId, attribute.ProductAttributeId, attribute.Id);
+                                        string textPrompt = !string.IsNullOrEmpty(attribute.TextPrompt) ? attribute.TextPrompt : attribute.Name;
+                                        <div class="property">
+                                            <span class="label">@textPrompt</span>
+                                            <select class="value" name="@(controlId)" id="@(controlId)">
+                                                @foreach (var pvaValue in attribute.Values)
+                                                {
+                                                    <option selected="@pvaValue.IsPreSelected" value="@pvaValue.Id">
+                                                        @pvaValue.Name
+                                                </option>
+                                                }
+                                            </select>
+                                            @if (@textPrompt == "Kích cỡ")
+                                            {
+                                                <a id="sizehint" href="~/t-popup/so_do_cac_san_pham" class="hint">Thắc mắc về cỡ (*)</a>
+                                            }
+                                        </div>
+                                    }
+
+                                    <div class="property">
+                                        <span class="label">Số lượng</span>
+                                        <input class="value qty" value="1" name='@(string.Format("addtocart_{0}", Model.Id)).EnteredQuantity' />
+                                        <div id="plus@(Model.Id)" class="plus"></div>
+                                        <div id="minus@(Model.Id)" class="minus"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="productcheckout">
+                                <input type="button" class="button-1 add-to-cart-button" value="Mua Ngay" data-productid="@Model.Id" onclick="AjaxCart.addproducttocartandgo_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.Id, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })    ', '#product-details-form');return false;" />
+                                <input type="button" class="button-1 add-to-cart-button" value="Thêm vào giỏ" data-productid="@Model.Id" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.Id, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })    ', '#product-details-form');return false;" />
+                            </div>
+                            <div style="display:inline-block">
+                                <div class="fb-like" mobile="false" data-href="@Request.Url.AbsoluteUri" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    @if (!String.IsNullOrEmpty(Model.FullDescription))
+                    {
+                        <div class="full-description" itemprop="description">
+                            @Html.Raw(Model.FullDescription)
+                        </div>
+                    }
+                </div>
+                <div style="margin-top:5px;margin-bottom:10px;width:700px;display:inline-block">
+                    <div data-width="700" class="fb-like" data-href="https://www.facebook.com/Aero87.vn" mobile="false" data-layout="standard" data-action="like" data-show-faces="true"></div>
+                </div>
+                <div class="fbcomment">
+                    <div class="title"><strong>Chia sẽ cảm nhận, thắc mắc của bạn với chúng tôi</strong></div>
+                    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="700" data-numposts="10" data-colorscheme="light" mobile="false"></div>
+                </div>
+
+                @Html.Widget("productdetails_before_collateral")
+                <div class="product-collateral">
+                    @Html.Action("ProductTierPrices", "Catalog", new { productId = Model.Id })
+                    @Html.Action("ProductSpecifications", "Catalog", new { productId = Model.Id })
+                    @Html.Action("ProductTags", "Catalog", new { productId = Model.Id })
+                    @Html.Action("ProductsAlsoPurchased", "Catalog", new { productId = Model.Id })
+                    @Html.Action("RelatedProducts", "Catalog", new { productId = Model.Id })
+                </div>
+            </div>
+        }
+        @Html.Widget("productdetails_bottom")
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#minus@(Model.Id)').click(function () {
+            var $input = $(this).parent().find('input');
+            var count = parseInt($input.val()) - 1;
+            count = count < 1 ? 1 : count;
+            $input.val(count);
+            $input.change();
+            return false;
+        });
+        $('#plus@(Model.Id)').click(function () {
+            var $input = $(this).parent().find('input');
+            $input.val(parseInt($input.val()) + 1);
+            $input.change();
+            return false;
+        });
+
+        $('#sizehint').fancybox({
+            'speedIn': 600,
+            'speedOut': 200,
+            'width': 620,
+            'height': 400,
+            'type': 'iframe'
+        });
+
+        var actionUrl = '@Url.Action("GetStoreProductStocking", "Catalog")';
+        var data = { productId: '@Model.Id' };
+        $.post(actionUrl, data)
+        .done(function(json) {
+            if (json != null) {
+                for (var i = 0; i < json.length; i++) {
+                    $(".cfstore").append("<div class='property'><a class='label' target='_blank' href='/lien_he' title='" + json[i].Address + "'>" + json[i].Name + "</a></div>");
+                }
+            }
+        })
+        .fail(function(jqxhr, textStatus, error) {
+            var err = textStatus + ", " + error;
+            console.log("Request Failed: " + err);    
+        });
+    });
+</script>

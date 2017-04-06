@@ -1,0 +1,8 @@
+﻿Group: Discount requirements
+FriendlyName: Customer has x.xx amount in their basket
+SystemName: DiscountRequirement.BasketHasValue
+Version: 1.0
+SupportedVersions: 3.10
+Author: Webreality - Giles Olley (Based on Nop.Plugin.DiscountRules.HadSpentAmount by NopCommerce Team)
+DisplayOrder: 1
+FileName: Nop.Plugin.DiscountRules.BasketHasValue.dll

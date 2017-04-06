@@ -1,0 +1,209 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Nop.Admin.Controllers
+
+@{
+    var gridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSize;
+    
+    //page title
+    ViewBag.Title = "Bảng cân đối tài khoản";
+}
+
+@model Nop.Admin.Models.Aero87.AccountBalanceSearch
+
+<div class="section-header">
+    <div class="title">
+        Bảng cân đối tài khoản
+    </div>
+</div>
+
+<table width="100%">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.FromDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.FromDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ToDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.ToDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ObjId):
+            </td>
+            <td class="adminData">
+                @(Html.Telerik().ComboBox()
+                        .Name("ObjId")
+                        .Filterable(m => m.FilterMode(AutoCompleteFilterMode.StartsWith))
+                        .DropDownHtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .HtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .AutoFill(true)
+                        .DataBinding(m => m.Ajax().Cache(true).Select("ObjAjax","Aero87")))
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2">
+                <input type="button" id="search-accountbalance" class="t-button" value="Tìm" />
+            </td>
+        </tr>
+</table>
+<p>
+</p>
+<table class="adminContent">
+    <tr>
+        <td>
+            @(Html.Telerik().Grid<Nop.Core.Domain.Aero87.AccountBalanceResult>()
+                    .Name("accountbalance-grid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.AcctId)
+                        .Filterable(false)
+                        .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= AcctId #>' class='checkboxGroups'/>")
+                        .Title("<input id='mastercheckbox' type='checkbox'/>")
+                        .Width(50)
+                        .HtmlAttributes(new { style = "text-align:center" })
+                        .HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Bound(x => x.AcctCode).Title("Mã TK");
+                        columns.Bound(x => x.AcctName).Title("Tên TK");
+                        columns.Bound(x => x.BeforeDebit).Title("Nợ đầu kỳ").Format("{0:N0}").Width(150);
+                        columns.Bound(x => x.BeforeCredit).Title("Có đầu kỳ").Format("{0:N0}").Width(150);
+                        columns.Bound(x => x.Debit).Title("Nợ phát sinh").Format("{0:N0}").Width(150);
+                        columns.Bound(x => x.Credit).Title("Có phát sinh").Format("{0:N0}").Width(150);
+                        columns.Bound(x => x.EndDebit).Title("Nợ cuối kỳ").Format("{0:N0}").Width(150);
+                        columns.Bound(x => x.EndCredit).Title("Có cuối kỳ").Format("{0:N0}").Width(150);
+                    })
+                    .DetailView(m => m.ClientTemplate(
+                        Html.Telerik().Grid<Nop.Core.Domain.Aero87.GeneralLedgerLineResult>()
+                        .Name("accountbalancedetail-grid<#= AcctId #>")
+                        .Columns(columns =>
+                            {
+                                columns.Bound(si => si.DocNo).Title("CT").Width(50);
+                                columns.Bound(si => si.DocDate).Title("Ngày").Width(150);
+                                columns.Bound(si => si.AcctCode).Title("Mã tài khoản").Width(50);
+                                columns.Bound(si => si.AcctName).Title("Tên tài khoản").Width(150);
+                                columns.Bound(si => si.ObjCode).Title("Mã Đối tượng").Width(50);
+                                columns.Bound(si => si.ObjName).Title("Tên Đối tượng");
+                                columns.Bound(si => si.Debit).Format("{0:N0}").Title("Nợ").Width(50);
+                                columns.Bound(si => si.Credit).Format("{0:N0}").Title("Có").Width(50);
+                                columns.Bound(si => si.Desc).Title("Diễn giải");
+                            })
+                        .DataBinding(dataBinding => dataBinding.Ajax()
+                                    .Select("AccountBalanceGridDetail", "Aero87", new
+                                    {
+                                        id = "<#= AcctId #>"
+                                    })).ClientEvents(events => events.OnDataBinding("onDataBindingDetail"))
+                                    .Pageable(settings => settings.PageSize(gridPageSize).Position(GridPagerPosition.Both))
+                        .ToHtmlString()
+                        )
+                        )
+                     .DataBinding(dataBinding => dataBinding.Ajax().Select("AccountBalanceList", "Aero87"))
+                     .ClientEvents(events => events.OnDataBinding("onDataBinding").OnDataBound("onDataBound").OnComplete("onComplete"))
+                     .EnableCustomBinding(true))
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+        var selectedIds = [];
+
+        $(document).ready(function () {
+
+            //search button
+            $('#search-accountbalance').click(function () {
+                //search
+                var grid = $('#accountbalance-grid').data('tGrid');
+                grid.currentPage = 1; //new search. Set page size to 1
+                grid.ajaxRequest();
+                //clear selected checkboxes
+                $('.checkboxGroups').attr('checked', false).change();
+                selectedIds = [];
+                return false;
+            });
+
+           
+
+            $('#mastercheckbox').click(function () {
+                $('.checkboxGroups').attr('checked', $(this).is(':checked')).change();
+            });
+
+            //wire up checkboxes. 
+            $('#accountbalance-grid').on('change', 'input[type=checkbox][id!=mastercheckbox]', function (e) {
+                var $check = $(this);
+                if ($check.is(":checked") == true) {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked == -1) {
+                        //add id to selectedIds.  
+                        selectedIds.push($check.val());
+                    }
+                }
+                else {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked > -1) {
+                        //remove id from selectedIds.  
+                        selectedIds = $.grep(selectedIds, function (item, index) {
+                            return item != $check.val();
+                        });
+                    }
+                }
+                updateMasterCheckbox();
+            });
+        });
+
+        function onDataBinding(e) {
+            var searchModel = {
+                FromDate: $('#@Html.FieldIdFor(model => model.FromDate)').val(),
+                ToDate: $('#@Html.FieldIdFor(model => model.ToDate)').val(),
+                ObjId: $('#@Html.FieldIdFor(model => model.ObjId)').val()
+            };
+            e.data = searchModel;
+        }
+
+        function onDataBindingDetail(e) {
+            var searchModel = {
+                FromDate: $('#@Html.FieldIdFor(model => model.FromDate)').val(),
+                ToDate: $('#@Html.FieldIdFor(model => model.ToDate)').val(),
+                ObjId: $('#@Html.FieldIdFor(model => model.ObjId)').val()
+            };
+            e.data = searchModel;
+        }
+
+        var aggs = null;
+
+        function onDataBound(e) {
+            $('#accountbalance-grid input[type=checkbox][id!=mastercheckbox]').each(function () {
+                var currentId = $(this).val();
+                var checked = jQuery.inArray(currentId, selectedIds);
+                //set checked based on if current checkbox's value is in selectedIds.  
+                $(this).attr('checked', checked > -1);
+            });
+
+            updateMasterCheckbox();
+
+            //Update Agg
+            //for (var key in aggs) {
+            //}
+        }
+
+        function onComplete(e) {
+            var result = e.response;
+            if (result) {
+                aggs = e.response["aggregates"];
+            }
+        }
+
+        function updateMasterCheckbox() {
+            var numChkBoxes = $('#accountbalance-grid input[type=checkbox][id!=mastercheckbox]').length;
+            var numChkBoxesChecked = $('#accountbalance-grid input[type=checkbox][checked][id!=mastercheckbox]').length;
+            $('#mastercheckbox').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
+        }
+    </script>  

@@ -1,0 +1,15 @@
+Payments.CashOnDelivery
+Payments.CheckMoneyOrder
+Widgets.GoogleAnalytics
+ThemeHelper.Clothes
+Shipping.FixedRate
+DiscountRequirement.HadSpentAmount
+DiscountRequirement.HasAllProducts
+DiscountRequirement.HasOneProduct
+DiscountRequirement.MustBeAssignedToCustomerRole
+Widgets.NivoSlider
+DiscountRequirement.BasketHasValue
+SevenSpikes.Core
+SevenSpikes.Nop.AjaxFilters
+SevenSpikes.Nop.Plugins.AjaxFilters
+Misc.FacebookShop

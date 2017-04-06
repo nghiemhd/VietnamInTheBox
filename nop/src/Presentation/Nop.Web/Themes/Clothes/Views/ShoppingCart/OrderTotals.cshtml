@@ -1,0 +1,249 @@
+﻿@model OrderTotalsModel
+@using Nop.Web.Models.ShoppingCart;
+<div class="total-info">
+    <table class="cart-total">
+        <tbody>
+            <tr>
+                <td class="cart-total-left">
+                    <span class="nobr">@T("ShoppingCart.Totals.SubTotal"):</span>
+                </td>
+                <td class="cart-total-right">
+                    <span class="nobr"><span class="product-price">@Model.SubTotal</span> </span>
+                </td>
+            </tr>
+            @if (!String.IsNullOrEmpty(Model.SubTotalDiscount))
+            {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">
+                            @T("ShoppingCart.Totals.SubTotalDiscount")
+                            @if (Model.AllowRemovingSubTotalDiscount)
+                            {
+                                /*empty value (little hack for FormValueExistsAttribute)*/
+                                <input type="submit" name="removesubtotaldiscount" value=" " title="@T("Common.Remove")" class="remove-discount-button" />                                    
+                            }
+                            : </span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr"><span class="product-price">@Model.SubTotalDiscount</span> </span>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td class="cart-total-left">
+                    @if (Model.Shipping != "0 ₫")
+                    {
+                    <span class="nobr">
+                        @{
+                            var selectProvince = new List<SelectListItem>();
+                            if (Model.Province == null)
+                            {
+                                selectProvince.Add(new SelectListItem() { Text = "Chọn khu vực", Value = "", Selected = true });
+                            }
+                            selectProvince.Add(new SelectListItem() { Text = "Hồ Chí Minh", Value = "HCM", Selected = (Model.Province == Nop.Web.Models.Checkout.CheckoutProvince.HCM) });
+                            selectProvince.Add(new SelectListItem(){Text = "Tỉnh khác",Value = "Other",Selected = (Model.Province == Nop.Web.Models.Checkout.CheckoutProvince.Other)});
+                        }
+                        <a target="_blank" style="font-weight: 700; color: #353434;" href="~/t/mien_phi_giao_hang">Giao hàng tại (*)</a>
+                        @Html.DropDownList("Province", selectProvince, new { style = "margin-top: -1px;" }) Phí vận chuyển:
+                    </span>
+                    }
+                    else
+                    { 
+                        <span class="nobr"><a target="_blank" style="font-weight: 700; color: #353434;" href="~/t/mien_phi_giao_hang">Phí vận chuyển (*):</a></span>
+                    }
+                    @if (Model.RequiresShipping && !String.IsNullOrEmpty(Model.SelectedShippingMethod))
+                    {
+                        <span class="selected-shipping-method">
+                            @T("ShoppingCart.Totals.Shipping.Method", Model.SelectedShippingMethod)
+                        </span>
+                    }
+                </td>
+                <td class="cart-total-right">
+                    <span class="nobr">
+                        @if (Model.RequiresShipping)
+                        {
+                            if (!String.IsNullOrEmpty(Model.Shipping))
+                            {
+                            <span class="product-price">@(Model.Shipping=="0 ₫"?"Miễn phí":Model.Shipping)
+                            </span>
+                            }
+                            else
+                            {
+                            <span>Chọn khu vực giao hàng để tính</span>
+                            }
+                        }
+                        else
+                        {
+                            <span>@T("ShoppingCart.Totals.Shipping.NotRequired")</span>
+                        }
+                    </span>
+                </td>
+            </tr>
+            @if (!String.IsNullOrEmpty(Model.PaymentMethodAdditionalFee))
+            {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">@T("ShoppingCart.Totals.PaymentMethodAdditionalFee"):</span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr"><span class="product-price">@Model.PaymentMethodAdditionalFee</span>
+                        </span>
+                    </td>
+                </tr>
+            }
+            @if (Model.DisplayTaxRates && Model.TaxRates.Count > 0)
+            {
+                foreach (var taxRate in Model.TaxRates)
+                {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">
+                            @string.Format(T("ShoppingCart.Totals.TaxRateLine").Text, taxRate.Rate)
+                            :</span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr">
+                            @taxRate.Value
+                        </span>
+                    </td>
+                </tr>
+                }
+            }
+            @if (Model.DisplayTax)
+            {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">@T("ShoppingCart.Totals.Tax"): </span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr"><span class="product-price">@Model.Tax</span> </span>
+                    </td>
+                </tr>
+            }
+            @if (!String.IsNullOrEmpty(Model.OrderTotalDiscount))
+            {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">
+                            @T("ShoppingCart.Totals.OrderTotalDiscount")
+                            @if (Model.AllowRemovingOrderTotalDiscount)
+                            {
+                                /*empty value (little hack for FormValueExistsAttribute)*/
+                                <input type="submit" name="removeordertotaldiscount" value=" " title="@T("Common.Remove")" class="remove-discount-button" />
+                            }
+                            : </span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr"><span class="product-price">@Model.OrderTotalDiscount</span> </span>
+                    </td>
+                </tr>
+            }
+            @if (Model.GiftCards.Count > 0)
+            {
+                foreach (var gc in Model.GiftCards)
+                {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">
+                            @T("ShoppingCart.Totals.GiftCardInfo", gc.CouponCode)
+                            @if (Model.IsEditable)
+                            {
+                                //little hack here with empty "value" element
+                                <input type="submit" name="removegiftcard-@gc.Id" value=" " title="@T("Common.Remove")" class="remove-gift-card-button" />
+                            }
+                            : </span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr"><span class="product-price">@gc.Amount</span> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cart-total-left-below">
+                        <span class="nobr"><span>
+                            @string.Format(T("ShoppingCart.Totals.GiftCardInfo.Remaining").Text, gc.Remaining)
+                        </span></span>
+                    </td>
+                    <td></td>
+                </tr>
+                }
+            }
+            @if (Model.RedeemedRewardPoints > 0)
+            {
+                <tr>
+                    <td class="cart-total-left">
+                        <span class="nobr">
+                            @string.Format(T("ShoppingCart.Totals.RewardPoints").Text, Model.RedeemedRewardPoints):</span>
+                    </td>
+                    <td class="cart-total-right">
+                        <span class="nobr"><span class="product-price">@Model.RedeemedRewardPointsAmount</span>
+                        </span>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td class="cart-total-left">
+                    <span class="nobr">
+                        @T("ShoppingCart.Totals.OrderTotal"):</span>
+                </td>
+                <td class="cart-total-right">
+                    <span class="nobr">
+                        @if (!String.IsNullOrEmpty(Model.OrderTotal))
+                        {
+                            <span class="product-price order-total"><strong>@Model.OrderTotal</strong></span>
+                        }
+                        else
+                        {
+                            <span>Chọn khu vực giao hàng để tính</span>
+                        }
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        @if (Model.Shipping == "0 ₫")
+        { 
+            <text>
+                var href = $(".checkout-buttons a").attr('href') + '?isFreeShip=true';
+                $(".checkout-buttons a").attr('href', href);
+                $(".checkout-buttons a").fancybox({
+                    'speedIn': 600,
+                    'speedOut': 200,
+                    'width': 420,
+                    'height': 310,
+                    'type': 'iframe'
+                });
+            </text>
+        }
+        else
+        {
+            <text>
+                $(".checkout-buttons a").fancybox({
+                    'speedIn': 600,
+                    'speedOut': 200,
+                    'width': 420,
+                    'height': 380,
+                    'type': 'iframe'
+                });
+            </text>
+        }
+
+    })
+    
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#Province').change(function () {
+            $.post('/Checkout/UpdateShipLocation', { location: $('#Province').val() }, function (data) {
+                window.location.reload();
+            })
+        })
+    })
+</script>

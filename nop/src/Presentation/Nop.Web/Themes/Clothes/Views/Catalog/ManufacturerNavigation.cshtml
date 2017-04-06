@@ -1,0 +1,50 @@
+﻿@model ManufacturerNavigationModel
+@using Nop.Web.Models.Catalog;
+@if (Model.Manufacturers.Count > 0)
+{
+    <div class="block block-manufacturer-navigation">
+        <div class="title">
+            <strong>@T("Manufacturers")</strong>
+        </div>
+        <div class="dd-wrapper">
+            @{
+                var manufacturers = new List<SelectListItem>
+                                        {
+                                            new SelectListItem()
+                                                {
+                                                    Text = T("Clothes.SelectManufacturer").Text,
+                                                    Value = ""
+                                                }
+                                        };
+                manufacturers.AddRange(Model.Manufacturers.Select(m => new SelectListItem
+                                                                           {
+                                                                               Text = m.Name,
+                                                                               Value = Url.RouteUrl("Manufacturer", new { SeName = m.SeName }),
+                                                                               Selected = m.IsActive
+                                                                           }));
+            }
+            @Html.DropDownList("manufacturernavigation", manufacturers, new { onchange = "manufacturerDDChange(this.value);", id="ManufacturersDD" })
+        </div>
+        @if (Model.TotalManufacturers > Model.Manufacturers.Count)
+        {
+            <div class="view-all">
+                <a href="@Url.RouteUrl("ManufacturerList")">@T("Manufacturers.ViewAll")</a>
+            </div>
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            try {
+                $("#ManufacturersDD").msDropDown();
+            } catch (e) {
+                alert(e.message);
+            }
+        });
+
+        function manufacturerDDChange(location) {
+            if(location != "") {
+                setLocation(location);
+            }
+        }
+    </script>
+}

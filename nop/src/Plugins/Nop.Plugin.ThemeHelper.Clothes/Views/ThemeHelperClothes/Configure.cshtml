@@ -1,0 +1,202 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Nop.Web.Framework
+@model Nop.Plugin.ThemeHelper.Clothes.Models.ConfigurationModel
+@{
+    Layout = "";
+}
+
+@Html.ValidationSummary(false)
+
+@using (Html.BeginForm())
+{
+    @Html.Telerik().TabStrip().Name("configure").Items(x =>
+{
+    x.Add().Text(T("Clothes.Configuration").Text).Content(Configuration().ToHtmlString()).Selected(true);
+    x.Add().Text(T("Clothes.PreconfigureSystem").Text).Content(PreconfigureSystem().ToHtmlString());
+    x.Add().Text(T("Clothes.SampleData").Text).Content(SampleData().ToHtmlString());
+})
+}
+
+@helper Configuration()
+{
+    @Html.Action("StoreScopeConfiguration", "Setting", new { area = "Admin" })
+   
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.RootCategoryNumber_OverrideForStore, model => model.RootCategoryNumber, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.RootCategoryNumber):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.RootCategoryNumber)
+                @Html.ValidationMessageFor(model => model.RootCategoryNumber)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.SubCategoryLevels_OverrideForStore, model => model.SubCategoryLevels, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.SubCategoryLevels):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.SubCategoryLevels)
+                @Html.ValidationMessageFor(model => model.SubCategoryLevels)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.PhoneNumber_OverrideForStore, model => model.PhoneNumber, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.PhoneNumber):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.PhoneNumber)
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.FacebookLink_OverrideForStore, model => model.FacebookLink, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.FacebookLink):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.FacebookLink)
+                @Html.ValidationMessageFor(model => model.FacebookLink)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.TwitterLink_OverrideForStore, model => model.TwitterLink, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.TwitterLink):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.TwitterLink)
+                @Html.ValidationMessageFor(model => model.TwitterLink)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.YouTubeLink_OverrideForStore, model => model.YouTubeLink, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.YouTubeLink):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.YouTubeLink)
+                @Html.ValidationMessageFor(model => model.YouTubeLink)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.SendoLink_OverrideForStore, model => model.SendoLink, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.SendoLink):
+            </td>
+            <td class="adminData">
+                @Html.EditorFor(model => model.SendoLink)
+                @Html.ValidationMessageFor(model => model.SendoLink)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Slide1Html_OverrideForStore, model => model.Slide1Html, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Slide1Html):
+            </td>
+            <td class="adminData">
+                @Html.TextAreaFor(model => model.Slide1Html, new { style = "width: 400px; height: 140px" })
+                @Html.ValidationMessageFor(model => model.Slide1Html)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Slide2Html_OverrideForStore, model => model.Slide2Html, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Slide2Html):
+            </td>
+            <td class="adminData">
+                @Html.TextAreaFor(model => model.Slide2Html, new { style = "width: 400px; height: 140px" })
+                @Html.ValidationMessageFor(model => model.Slide2Html)
+            </td>
+        </tr>
+        <tr>
+            <td class="adminTitle">
+                @Html.OverrideStoreCheckboxFor(model => model.Slide3Html_OverrideForStore, model => model.Slide3Html, Model.ActiveStoreScopeConfiguration)
+                @Html.NopLabelFor(model => model.Slide3Html):
+            </td>
+            <td class="adminData">
+                @Html.TextAreaFor(model => model.Slide3Html, new { style = "width: 400px; height: 140px" })
+                @Html.ValidationMessageFor(model => model.Slide3Html)
+            </td>
+        </tr>
+        <tr>
+            <td class="options">
+                <input type="submit" name="saveconfigure" class="t-button" value="@T("Admin.Common.Save")" />
+            </td>
+        </tr>
+    </table>
+}
+
+@helper PreconfigureSystem()
+{
+    <table class="adminContent">
+        <tr>
+            <td>
+                <h4>This tab allows you to preconfigure the theme for correct working:</h4>
+                <ul>
+                    <li>Set "Product thumbnail image size (catalog)" to 330</li>
+                    <li>Set "Product detail image size" to 600</li>
+                    <li>Set "Product thumbnail image size (product page)" to 180</li>
+                    <li>Set "Number of manufacturers to display" to 15</li>
+                    <li>Set "Number of also purchased products to display" to 6</li>
+                    <li>Set "'Products by tag' Page Size options (comma separated)" to 6, 3, 12, 24</li>
+                    <li>Enadle "Use images for language selection"</li>
+                    <li>Disable default Nivo Slider widget (if installed)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" width="100%">
+                <input type="submit" name ="preconfigure" class="t-button" value="@T("Clothes.Preconfigure")"/>
+            </td>
+        </tr>
+    </table>
+}
+
+@helper SampleData()
+{
+    <table class="adminContent">
+        <tr>
+            <td>
+                @if(Model.DataAlreadyInstalled)
+                {
+                    <h4>@T("Clothes.DataAlreadyInstalled")</h4>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name ="installsampledata" class="t-button" value="@T("Clothes.InstallSampleData")" onclick="return InstallSampleData()" />
+                <p><b>@T("Clothes.SampleData.Note")</b></p>
+            </td>
+        </tr>
+    </table>
+    
+    <div class="throbber"> 
+        <div class="curtain">
+        </div>
+        <div class="curtain-content">
+            <div>
+                <h1 class="throbber-header">
+                    @T("Clothes.Installing")</h1>
+                <p>
+                    <img src="@Url.Content("~/content/install/images/install-synchronizing.gif")" alt="" />
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        function InstallSampleData() {
+            if (confirm('@T("Admin.Common.AreYouSure")')) {
+                $('.throbber').show();
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}

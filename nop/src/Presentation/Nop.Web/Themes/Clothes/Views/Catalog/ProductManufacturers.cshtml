@@ -1,0 +1,46 @@
+﻿@model IList<ManufacturerModel>
+@using Nop.Web.Models.Catalog;
+@if (Model.Count > 0)
+{
+    <div class="manufacturers">
+        @if (Model.Count == 1)
+        {
+            <span class="label">@T("Products.Manufacturer"):</span>
+        }
+        else
+        {
+            <span class="label">@T("Products.Manufacturers"):</span>
+        }
+        <span class="value">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                
+                if (item.Name == "Aéropostale")
+                {
+                    <a href="@Url.RouteUrl("Manufacturer", new { SeName = item.SeName })" title="@item.Name"><img class="aero" src="~/Themes/Clothes/Content/images/aero.png"/></a>
+                }
+                else if (item.Name == "GAP")
+                {
+                    <a href="@Url.RouteUrl("Manufacturer", new { SeName = item.SeName })" title="@item.Name"><img class="gap" src="~/Themes/Clothes/Content/images/gap.jpg"/></a>
+                }
+                else if (item.Name == "H&M")
+                {
+                    <a href="@Url.RouteUrl("Manufacturer", new { SeName = item.SeName })" title="@item.Name"><img class="hm" src="~/Themes/Clothes/Content/images/hm.jpg"/></a>
+                }
+                else if (item.Name == "Old Navy")
+                {
+                    <a href="@Url.RouteUrl("Manufacturer", new { SeName = item.SeName })" title="@item.Name"><img class="on" src="~/Themes/Clothes/Content/images/on.jpg"/></a>
+                }
+                else
+                {
+                    <a href="@Url.RouteUrl("Manufacturer", new { SeName = item.SeName })">@item.Name</a>
+                    if (i != Model.Count - 1)
+                    {
+                    <span class="separator">,</span>
+                    }
+                }
+            }
+        </span>
+    </div>
+}

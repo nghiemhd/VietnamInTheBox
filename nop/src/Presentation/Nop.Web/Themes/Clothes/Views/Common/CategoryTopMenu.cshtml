@@ -1,0 +1,159 @@
+﻿@using Nop.Plugin.ThemeHelper.Clothes.Models
+@model Nop.Plugin.ThemeHelper.Clothes.Models.CategoryTopMenuModel
+
+@helper RenderCategoryLine(CategoryTopMenuModel.CategoryModel category, int level, string className)
+{
+    if(category.IncludeInTopMenu)
+    {
+
+        <li class="@className">
+            @if(category.IsHotCat)
+            {
+                <span class="menuhot"></span>
+            }
+            @if(category.IsHighlighted)
+            {
+                <a href="@Url.RouteUrl("Category", new {SeName = category.SeName})" class="highlight">
+                    <span>@category.Name</span>
+                </a>
+            }
+            else
+            {   
+                <a href="@Url.RouteUrl("Category", new {SeName = category.SeName})">
+                    <span>@category.Name</span>
+                </a>
+            }
+            @{
+                if (category.SubCategories.Count > 0)
+                {
+
+                    var levelClass = "";
+                    if (level == 0)
+                    {
+                        levelClass = "firstLevel";
+                        <div class="hover-block">
+                            <div class="ver-line-left"></div>
+                            <div class="ver-line-right"></div>
+                            <div class="hor-line"></div>
+                            <div class="triangle"></div>
+                        </div>
+                    }
+                    <ul class="sublist @levelClass">
+                        @for (var i = 0; i < category.SubCategories.Count; i++)
+                        {
+                            var liClass = "";
+                            if (i == category.SubCategories.Count - 1)
+                            {
+                                liClass = "last-li";
+                            }
+                            var subCategory = category.SubCategories[i];
+                            @RenderCategoryLine(subCategory, level + 1, liClass)
+                        }
+                    </ul>
+                }else
+                {
+                    if (level == 0)
+                    {
+                        <div class="hover-block without-sublist">
+                            <div class="ver-line-left"></div>
+                            <div class="ver-line-right"></div>
+                        </div>
+                    }
+                }
+            }
+        </li>
+    }
+}
+
+@helper RenderManufacturerLine(CategoryTopMenuModel.ManufacturerModel manufacturer, int level, string className)
+{
+    <li class="@className">
+        @if(level == 0)
+        {
+            <a href="~/manufacturer/all">
+                <span>@manufacturer.Name</span>
+            </a>
+        }
+        else
+        {
+            <a href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })">
+                <span>@manufacturer.Name</span>
+            </a>
+        }
+        @{
+            if (manufacturer.Manufacturers.Count > 0)
+            {
+                var levelClass = "";
+                if (level == 0)
+                {
+                    levelClass = "firstLevel";
+                    <div class="hover-block">
+                        <div class="ver-line-left"></div>
+                        <div class="ver-line-right"></div>
+                        <div class="hor-line"></div>
+                        <div class="triangle"></div>
+                    </div>
+                }
+                <ul class="sublist @levelClass">
+                    @for (var i = 0; i < manufacturer.Manufacturers.Count; i++)
+                    {
+                        var liClass = "";
+                        if (i == manufacturer.Manufacturers.Count - 1)
+                        {
+                            liClass = "last-li";
+                        }
+                        var subManufacturer = manufacturer.Manufacturers[i];
+                        @RenderManufacturerLine(subManufacturer, level + 1, liClass)
+                    }
+                </ul>
+            }
+            else
+            {
+                if (level == 0)
+                {
+                    <div class="hover-block without-sublist">
+                        <div class="ver-line-left"></div>
+                        <div class="ver-line-right"></div>
+                    </div>
+                }
+            }
+        }
+    </li>
+}
+
+
+@if (Model.Categories.Count > 0)
+{
+    <ul class="top-menu top-menu-main">
+        @foreach (var category in Model.Categories)
+        {
+            @RenderCategoryLine(category, 0, "")
+        }
+
+        @*@RenderManufacturerLine(Model.Manufacturer, 0, "")*@
+
+        @*<li class="facebook">
+            <div class="fb-like" data-href="https://www.facebook.com/Aero87.vn" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        </li>*@
+        @*<li class="search-box">
+            @Html.Action("SearchBox", "Catalog")
+        </li>*@
+    </ul>
+}
+
+<script type="text/javascript">
+    $('li', '.top-menu').on('mouseenter', function () {
+        $('a', $(this)).first().addClass('hover');
+        $('.hover-block', $(this)).show();
+        if (!$(this).parent().hasClass('top-menu')) {
+            var width = $(this).innerWidth();
+            $('.sublist', $(this)).first().css('left', width);
+        }
+        $('.sublist', $(this)).first().addClass('active');
+    });
+    $('li', '.top-menu').on('mouseleave', function () {
+        $('a', $(this)).first().removeClass('hover');
+        $('.hover-block', $(this)).hide();
+        $('.sublist', $(this)).first().removeClass('active');
+    });
+</script>

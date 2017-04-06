@@ -1,0 +1,85 @@
+﻿@model Nop.Web.Models.Checkout.QuickCheckoutModel
+@using Nop.Web.Models.Checkout;
+@using Nop.Core.Infrastructure.DependencyManagement;
+@using Nop.Core.Infrastructure;
+
+@{
+    Layout = "~/Views/Shared/_RootPopup.cshtml";
+    Html.AppendCssFileParts("~/Themes/Clothes/Content/styles.css");
+}
+
+@if (Model.IsClose)
+{
+     <script type="text/javascript">
+         parent.jQuery.fancybox.close();
+         parent.location.href = '@Url.Action("QuickOpcConfirmOrder", "Checkout")';
+
+     </script>
+}
+else
+{
+
+    <div class="quickcheckout">
+        @using (Html.BeginForm())
+        {
+        <table>
+            <caption>
+                <h3>ĐẶT HÀNG - HOẶC GỌI (08)668 000 55 - 0903 090 357</h3>             
+                <hr />
+                <span class="error">@Html.ValidationSummary()</span>
+            </caption>
+            <tr><td><span class="label">Tên bạn</span></td><td>@Html.TextBoxFor(m => m.CustomerName, new { @class = "require",placeholder="Tên đầy đủ của bạn" })</td></tr>
+            <tr><td><span class="label">Số ĐT</span></td><td>@Html.TextBoxFor(m => m.Phone, new { @class = "require", placeholder = "Số điện thoại liên lạc với bạn để xác nhận đơn hàng" })</td></tr>
+            <tr><td><span class="label">Email</span></td><td>@Html.TextBoxFor(m => m.Email,new { placeholder = "Bạn sẽ nhận thông báo về tình trạng đơn hàng" })</td></tr>
+            @if (Model.IsFreeship)
+            {
+                <tr><td><span class="label">Địa chỉ</span></td><td>@Html.TextBoxFor(m => m.AddressOther, new { @class = "require", placeholder = "Địa chỉ giao của bạn, ghi rỏ tỉnh thành phố" })</td></tr>
+            }
+            else
+            { 
+                <tr><td><span class="label">Tỉnh thành</span></td><td align="left"><div style="margin-top: 10px;">@Html.RadioButtonFor(m => m.Province, "HCM", new { style = "margin-top:-1.8px;" })<span>Hồ Chí Minh</span> (Phí vận chuyển <b>20.000đ</b>)</div><br /><div style="margin-bottom: 10px;">@Html.RadioButtonFor(m => m.Province, "Other", new { style = "margin-top:-1.8px;" })<span>Khác</span> (Phí vận chuyển <b>40.000đ</b>)</div></td></tr>
+                <tr id="traddressOther"><td><span class="label">Địa chỉ</span></td><td>@Html.TextBoxFor(m => m.AddressOther, new { @class = "require", placeholder = "Địa chỉ giao của bạn, ghi rỏ tỉnh thành phố" })</td></tr>
+                <tr id="traddressHCM"><td><span class="label">Địa chỉ</span></td><td>@Html.TextBoxFor(m => m.AddressHCM, new { @class = "require", placeholder = "Địa chỉ giao hàng tại Hồ Chí Minh" })</td></tr>
+            }
+            
+            <tr><td><span class="label">Ghi chú</span></td><td>@Html.TextAreaFor(m => m.Note)</td></tr>
+        </table>
+        <button type="submit" id="checkout" name="checkout" value="checkout" class="button-1 checkout-button">
+            <span>Đặt hàng</span>
+        </button>
+        }
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var province = $("input[name='Province']");
+
+        $('#traddressHCM').hide();
+        $('#traddressOther').hide();
+        
+        var checked = $("input[name='Province']:checked");
+        
+        if (checked.val() == 'HCM') {
+            $('#traddressHCM').show();
+            $('#traddressOther').hide();
+        }
+
+        if (checked.val() == 'Other') {
+            $('#traddressHCM').hide();
+            $('#traddressOther').show();
+        }
+
+        province.change(function () {
+            if ($(this).val() == 'HCM') {
+                $('#traddressHCM').show();
+                $('#traddressOther').hide();
+            }
+            else {
+                $('#traddressHCM').hide();
+                $('#traddressOther').show();
+            }
+        })
+    })
+</script>

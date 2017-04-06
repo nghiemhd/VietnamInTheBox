@@ -1,0 +1,319 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Nop.Admin.Controllers
+
+@{
+    var gridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSize;
+    
+    //page title
+    ViewBag.Title = "Điều chỉnh tồn kho";
+}
+
+@model Nop.Admin.Models.Aero87.InventoryAdjSearch
+
+<div class="section-header">
+    <div class="title">
+        Danh sách chứng từ
+    </div>
+    <div class="options">
+        <a href="@Url.Action("EditInventoryAdj")" class="t-button">Tạo mới</a>
+    </div>
+</div>
+
+<table width="100%">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.FromDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.FromDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ToDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.ToDate)
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.StoreId):
+            </td>
+            <td class="adminData">
+                @Html.DropDownList("StoreId", Model.Stores)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.IAStatus):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListForEnum(model => Model.IAStatus,typeof(Nop.Core.Domain.Aero87.IAStatus), new DropDownItem { Text = "---Tất cả---" })
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.AdjNo):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.AdjNo)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ProductCode):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.ProductCode)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Barcode):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.Barcode)
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="button" id="search-inventoryadjs" class="t-button" value="Tìm" />
+            </td>
+        </tr>
+</table>
+<p>
+</p>
+<table class="adminContent">
+    <tr>
+        <td>
+            @(Html.Telerik().Grid<Nop.Core.Domain.Aero87.InventoryAdjResult>()
+                    .Name("inventoryadjs-grid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.Id)
+                        .Filterable(false)
+                        .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= Id #>' class='checkboxGroups'/>")
+                        .Title("<input id='mastercheckbox' type='checkbox'/>")
+                        .Width(50)
+                        .HtmlAttributes(new { style = "text-align:center" })
+                        .HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Bound(x => x.StoreCode).Title("CH");
+                        columns.Bound(x => x.AdjNo).Title("Mã CT");
+
+                        columns.Bound(x => x.IAStatusName).Title("Tình trạng");
+                        
+                        columns.Bound(x => x.AdjDate).Width(150).Title("Ngày CT");
+                        columns.Bound(x => x.CostAmount).Format("{0:N0}").Title("Tổng tiền");
+                        columns.Bound(x => x.Qty).Format("{0:N0}").Title("Tổng lượng");
+                        columns.Bound(x => x.DebitAcctCode).Title("Tài khoản");
+                        columns.Bound(x => x.CreatedDate).Title("Ngày tạo");
+                        columns.Bound(x => x.Desc).Title("Diễn giải");
+
+                    })
+                            .DetailView(m => m.ClientTemplate(
+                                Html.Telerik().Grid<Nop.Core.Domain.Aero87.InventoryAdjLineResult>()
+                                .Name("inventorydetail-grid<#= Id #>")
+                                .Columns(columns =>
+                                    {
+                                        columns.Bound(si => si.PictureUrl).Title("").ClientTemplate("<img alt='<#= Id #>' src='<#= PictureUrl #>' />");
+                                        columns.Bound(si => si.Name).Title("Tên sản phẩm");
+                                        columns.Bound(si => si.Barcode).Title("Mã vạch");
+                                        columns.Bound(si => si.Qty).Title("Số lượng");
+                                        columns.Bound(si => si.CostPrice).Title("Giá").Format("{0:N0}");
+                                        columns.Bound(si => si.CostAmount).Title("Tổng").Format("{0:N0}");
+                                        columns.Bound(si => si.AttributeDesc).Title("Thuộc tính");
+                                    })
+                                .DataBinding(dataBinding => dataBinding.Ajax()
+                                         .Select("InventoryAdjGridDetail", "Aero87", new
+                                         {
+                                             id = "<#= Id #>"
+                                         }))
+                                .Pageable(settings => settings.PageSize(gridPageSize).Position(GridPagerPosition.Both))
+                                .ToHtmlString()
+                                )
+                             )
+                     .Pageable(settings => settings.PageSize(gridPageSize).Position(GridPagerPosition.Both))
+                     .DataBinding(dataBinding => dataBinding.Ajax().Select("InventoryAdjList", "Aero87"))
+                     .ClientEvents(events => events.OnDataBinding("onDataBinding").OnDataBound("onDataBound").OnComplete("onComplete"))
+                     .EnableCustomBinding(true))
+        </td>
+    </tr>
+</table>
+
+@{Html.Telerik().Window()
+        .Name("approve-window")
+        .Title("Duyệt Hóa Đơn Mua Hàng")
+        .Content(@<text>
+    @using (Html.BeginForm("ApprovePurchaseOrder", "Aero87", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    {
+        @Html.Hidden("InvoiceId")
+        <table style="text-align: left;">
+            <tr>
+                <td>
+                    Tài khoản ghi có:
+                </td>
+                <td>
+                    @(Html.Telerik().ComboBox()
+                        .Name("CreditAcctId")
+                        .Filterable(m => m.FilterMode(AutoCompleteFilterMode.StartsWith))
+                        .DropDownHtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .HtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .AutoFill(true)
+                        .DataBinding(m => m.Ajax().Cache(true).Select("AcctAjax","Aero87")))
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                   Đối tượng công nợ (nếu đòi hỏi):
+                </td>
+                <td>
+                    @(Html.Telerik().ComboBox()
+                        .Name("ObjId")
+                        .Filterable(m => m.FilterMode(AutoCompleteFilterMode.StartsWith))
+                        .DropDownHtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .HtmlAttributes( new { style = "width:200px; white-space:nowrap;" })
+                        .AutoFill(true)
+                        .DataBinding(m => m.Ajax().Cache(true).Select("ObjAjax","Aero87")))
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                   Diễn giải:
+                </td>
+                <td>
+                    @Html.TextArea("Desc")
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="t-button" value="Duyệt" />
+                </td>
+            </tr>
+        </table>
+    }
+    </text>)
+        .Width(400)
+        .Height(245)
+        .Draggable(true)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+
+<script type="text/javascript">
+
+    function release(invoiceId) {
+        $('#approve-window').find('#InvoiceId').val(invoiceId);
+        $('#approve-window').data('tWindow').center().open();
+    }
+
+        var selectedIds = [];
+
+        $(document).ready(function () {
+
+            $('#approve-window').find('form').submit(function () {
+                var data = $(this).serializeArray();
+                $.post('@Url.Action("ApprovePurchaseInvoice", "Aero87")', data, function (rp) {
+                    if (!rp.IsOke) alert(rp);
+                    $('#approve-window').data('tWindow').close();
+                    $('#search-inventoryadjs').trigger('click');
+                });
+                return false;
+            });
+
+            //search button
+            $('#search-inventoryadjs').click(function () {
+                //search
+                var grid = $('#inventoryadjs-grid').data('tGrid');
+                grid.currentPage = 1; //new search. Set page size to 1
+                grid.ajaxRequest();
+                //clear selected checkboxes
+                $('.checkboxGroups').attr('checked', false).change();
+                selectedIds = [];
+                return false;
+            });
+
+           
+
+            $('#mastercheckbox').click(function () {
+                $('.checkboxGroups').attr('checked', $(this).is(':checked')).change();
+            });
+
+            //wire up checkboxes. 
+            $('#inventoryadjs-grid').on('change', 'input[type=checkbox][id!=mastercheckbox]', function (e) {
+                var $check = $(this);
+                if ($check.is(":checked") == true) {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked == -1) {
+                        //add id to selectedIds.  
+                        selectedIds.push($check.val());
+                    }
+                }
+                else {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked > -1) {
+                        //remove id from selectedIds.  
+                        selectedIds = $.grep(selectedIds, function (item, index) {
+                            return item != $check.val();
+                        });
+                    }
+                }
+                updateMasterCheckbox();
+            });
+        });
+
+        function onDataBinding(e) {
+            var searchModel = {
+                FromDate: $('#@Html.FieldIdFor(model => model.FromDate)').val(),
+                ToDate: $('#@Html.FieldIdFor(model => model.ToDate)').val(),
+                StoreId: $('#@Html.FieldIdFor(model => model.StoreId)').val(),
+                IAStatus: $('#@Html.FieldIdFor(model => model.IAStatus)').val(),
+                AdjNo: $('#@Html.FieldIdFor(model => model.AdjNo)').val(),
+                ProductCode: $('#@Html.FieldIdFor(model => model.ProductCode)').val(),
+                Barcode: $('#@Html.FieldIdFor(model => model.Barcode)').val()
+            };
+            e.data = searchModel;
+        }
+
+        var aggs = null;
+
+        function onDataBound(e) {
+            $('#inventoryadjs-grid input[type=checkbox][id!=mastercheckbox]').each(function () {
+                var currentId = $(this).val();
+                var checked = jQuery.inArray(currentId, selectedIds);
+                //set checked based on if current checkbox's value is in selectedIds.  
+                $(this).attr('checked', checked > -1);
+            });
+
+            updateMasterCheckbox();
+
+            //Update Agg
+            for (var key in aggs) {
+            }
+        }
+
+        function onComplete(e) {
+            var result = e.response;
+            if (result) {
+                aggs = e.response["aggregates"];
+            }
+        }
+
+        function updateMasterCheckbox() {
+            var numChkBoxes = $('#inventoryadjs-grid input[type=checkbox][id!=mastercheckbox]').length;
+            var numChkBoxesChecked = $('#inventoryadjs-grid input[type=checkbox][checked][id!=mastercheckbox]').length;
+            $('#mastercheckbox').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
+        }
+    </script>  

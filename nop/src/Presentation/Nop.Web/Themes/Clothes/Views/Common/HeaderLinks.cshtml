@@ -1,0 +1,89 @@
+﻿@model Nop.Plugin.ThemeHelper.Clothes.Models.HeaderLinksModel
+@using Nop.Web.Models.Common;
+<div class="header-links">
+    <ul>
+        @Html.Widget("header_links_before")
+        @if (Model.IsAuthenticated)
+        {
+            <li><a href="@Url.RouteUrl("thoat")" class="ico-logout">@T("Account.Logout")</a></li>
+            <li class="divider"></li>
+        }
+        else
+        {
+            <li><a href="@Url.RouteUrl("dang_ky")" class="ico-register">@T("Account.Register")</a></li>
+            <li class="divider"></li>
+            <li><a href="@Url.RouteUrl("dang_nhap")" class="ico-login">@T("Account.Login")</a></li>
+            <li class="divider"></li>
+        }
+        <li><a href="@Url.RouteUrl("thong_tin_tai_khoan")" class="account">@T("Account.MyAccount")</a></li>
+        @if (Model.AllowPrivateMessages)
+        {
+            <li class="divider"></li>
+            <li><a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">@T("PrivateMessages.Inbox")</a>
+                @Model.UnreadPrivateMessages</li>
+            if (!string.IsNullOrEmpty(Model.AlertMessage))
+            {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    displayPopupNotification('@(Model.AlertMessage)', 'success', false);
+                });
+            </script>
+            }
+        }
+        @if (Model.WishlistEnabled)
+        {
+            <li class="divider"></li>
+            <li>
+                <a href="@Url.RouteUrl("danh_sach_mong_muon")" class="ico-wishlist">
+                    <span class="cart-label">@T("Wishlist")</span>
+                    <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
+                </a>
+            </li>
+        }
+        @if (Model.ShoppingCartEnabled)
+        {
+            <li class="divider"></li>
+            <li id="cxcart">
+                @Html.Action("FlyoutShoppingCart", "ShoppingCart")
+                <a href="@Url.RouteUrl("gio_hang")" class="ico-cart">
+                    <span class="cart-label">@T("ShoppingCart")</span>
+                    <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
+                </a>
+            </li>
+            @*if (Model.DisplayCheckoutButton)
+            {
+                <li class="divider"></li>
+                <li><a href="@Url.RouteUrl("thanh_toan")" class="ico-cart">@T("Checkout")</a></li>
+            }*@
+        }
+        <li class="divider"></li>
+        <li>
+            <a href="@Url.RouteUrl("cam_nang_mua_sam")">
+                Bài viết
+            </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="@Url.RouteUrl("lien_he")">
+                Liên hệ
+            </a>
+        </li>
+        
+        @Html.Widget("header_links_after")
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.header').on('mouseenter', '#cxcart', function () {
+            $('#flyout-cart').addClass('active');
+        });
+        $('.header').on('mouseleave', '#cxcart', function () {
+            $('#flyout-cart').removeClass('active');
+        });
+    });
+</script>
+
+<div style="display:none">
+    @Html.Action("AdminHeaderLinks", "Common")
+</div>

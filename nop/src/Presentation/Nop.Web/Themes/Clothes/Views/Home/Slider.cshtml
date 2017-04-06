@@ -1,0 +1,34 @@
+﻿@model Nop.Plugin.ThemeHelper.Clothes.Models.SliderModel
+@{
+    Html.AddScriptParts("~/Themes/Clothes/Scripts/jquery.bxslider.min.js");
+}
+@using Nop.Web.Framework.UI
+
+@helper RenderSliderLine(string html)
+{
+    if (!string.IsNullOrEmpty(html))
+    {
+        <li>@Html.Raw(html)</li>
+    }
+}
+<div class="slider-wrapper theme-default">
+    <ul class="bxslider">
+        @RenderSliderLine(Model.Slide1Html)
+        @RenderSliderLine(Model.Slide2Html)
+        @RenderSliderLine(Model.Slide3Html)
+    </ul>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.bxslider').bxSlider({
+            autoStart: true,
+            autoHover: true,
+            speed: 1000,
+            prevText: "",
+            nextText: "",
+            auto: true,
+            pause: 5000,
+            pager: false
+        });
+    });
+</script>

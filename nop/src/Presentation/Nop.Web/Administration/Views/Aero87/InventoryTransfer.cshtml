@@ -1,0 +1,266 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Nop.Admin.Controllers
+
+@{
+    var gridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSize;
+    
+    //page title
+    ViewBag.Title = "Vận đơn";
+}
+
+@model Nop.Admin.Models.Aero87.InventoryTransferSearch
+
+<div class="section-header">
+    <div class="title">
+        Danh sách vận đơn
+    </div>
+    <div class="options">
+        <input type="submit" id="btnNewInventoryTransfer" name="btnNewInventoryTransfer" value="Tạo vận đơn" onclick="javascript:OpenWindow('@(Url.Action("InventoryTransfer", "Aero87", new { categoryId = Model.Id, btnId = "btnRefreshProducts", formId = "category-form" }))', 800, 800, true); return false;" class="t-button" />
+    </div>
+</div>
+
+<table width="100%">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.FromDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.FromDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ToDate):
+            </td>
+            <td class="adminData">
+                @Html.Telerik().DatePickerFor(model => Model.ToDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Status):
+            </td>
+            <td class="adminData">
+                @Html.DropDownListForEnum(model => Model.Status, typeof(Nop.Core.Domain.Aero87.ITStatus), new DropDownItem { Text = "---Tất cả---" })
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.FromStoreId):
+            </td>
+            <td class="adminData">
+                @Html.DropDownList("FromStoreId", Model.Stores)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ToStoreId):
+            </td>
+            <td class="adminData">
+                @Html.DropDownList("ToStoreId", Model.Stores)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.TranNo):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.TranNo)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.ProductCode):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.ProductCode)
+            </td>
+        </tr>
+
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.Barcode):
+            </td>
+            <td class="adminData">
+                @Html.TextBoxFor(model => Model.Barcode)
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="button" id="search-inventorytransfers" class="t-button" value="Tìm" />
+            </td>
+        </tr>
+</table>
+<p>
+</p>
+<table class="adminContent">
+    <tr>
+        <td>
+            @(Html.Telerik().Grid<Nop.Core.Domain.Aero87.InventoryTransferResult>()
+                    .Name("inventorytransfers-grid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.Id)
+                        .Filterable(false)
+                        .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= Id #>' class='checkboxGroups'/>")
+                        .Title("<input id='mastercheckbox' type='checkbox'/>")
+                        .Width(50)
+                        .HtmlAttributes(new { style = "text-align:center" })
+                        .HeaderHtmlAttributes(new { style = "text-align:center" });
+                        columns.Bound(x => x.TransferNo).Title("CT");
+                        columns.Bound(x => x.TransferDate).Title("Ngày");
+                        if (ViewBag.CanConfirmInventoryTransfer)
+                        {
+                            columns.Bound(x => x.StatusName).Title("Tình trạng").ClientTemplate("<input type=button class='t-button status' onclick='approve(this,<#= Id#>);' value='<#= StatusName#>'/>");
+                        }
+                        else
+                        {
+                            columns.Bound(x => x.StatusName).Title("Tình trạng");
+                        }
+                        columns.Bound(x => x.StoreCode).Title("Từ kho");
+                        columns.Bound(x => x.ToStoreCode).Title("Đến kho");
+                        columns.Bound(x => x.Qty).Format("{0:N0}").Title("SL").FooterTemplate(
+                                                        "<table><caption><strong>Tính tổng:</strong></caption>" +
+                                                         "<tr><td>Tổng lượng: </td><td align='right'><span id=\"aggregator-SumQty-block\"></span></td></tr>"
+                                                         + "</table>"
+                            );
+                        columns.Bound(x => x.Desc).Title("Diễn giải");
+                        columns.Bound(x => x.CreatedUser).Title("Cập nhật bởi");
+                        })
+                        .DetailView(m => m.ClientTemplate(
+                                    Html.Telerik().Grid<Nop.Core.Domain.Aero87.InventoryTransferLineResult>()
+                                    .Name("inventorydetail-grid<#= Id #>")
+                                    .Columns(columns =>
+                                        {
+                                            columns.Bound(si => si.PictureUrl).Title("").ClientTemplate("<img alt='<#= Id #>' src='<#= PictureUrl #>' />");
+                                            columns.Bound(si => si.Name).Title("Tên sản phẩm");
+                                            columns.Bound(si => si.Barcode).Title("Mã vạch");
+                                            columns.Bound(si => si.Qty).Title("Số lượng");
+                                            columns.Bound(si => si.AttributeDesc).Title("Thuộc tính");
+                                        })
+                                    .DataBinding(dataBinding => dataBinding.Ajax()
+                                                .Select("InventoryTransferGridDetail", "Aero87", new
+                                                {
+                                                    id = "<#= Id #>"
+                                                }))
+                                    .ToHtmlString()
+                                    )
+                                    )
+                     .Pageable(settings => settings.PageSize(gridPageSize).Position(GridPagerPosition.Both))
+                     .DataBinding(dataBinding => dataBinding.Ajax().Select("InventoryTransferList", "Aero87"))
+                     .ClientEvents(events => events.OnDataBinding("onDataBinding").OnDataBound("onDataBound").OnComplete("onComplete"))
+                     .EnableCustomBinding(true))
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    function approve(obj, id) {
+        if (obj.value == 'Chờ xác nhận') {
+            $.post('@Url.Action("ApproveTransfer", "Aero87")' + '/' + id, function (rp) {
+                if (!rp.IsOke) alert(rp);
+                $('#search-inventorytransfers').trigger('click');
+            });
+            return false;
+        }
+    }
+
+        var selectedIds = [];
+
+        $(document).ready(function () {
+
+            //search button
+            $('#search-inventorytransfers').click(function () {
+                //search
+                var grid = $('#inventorytransfers-grid').data('tGrid');
+                grid.currentPage = 1; //new search. Set page size to 1
+                grid.ajaxRequest();
+                //clear selected checkboxes
+                $('.checkboxGroups').attr('checked', false).change();
+                selectedIds = [];
+                return false;
+            });
+
+           
+
+            $('#mastercheckbox').click(function () {
+                $('.checkboxGroups').attr('checked', $(this).is(':checked')).change();
+            });
+
+            //wire up checkboxes. 
+            $('#inventorytransfers-grid').on('change', 'input[type=checkbox][id!=mastercheckbox]', function (e) {
+                var $check = $(this);
+                if ($check.is(":checked") == true) {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked == -1) {
+                        //add id to selectedIds.  
+                        selectedIds.push($check.val());
+                    }
+                }
+                else {
+                    var checked = jQuery.inArray($check.val(), selectedIds);
+                    if (checked > -1) {
+                        //remove id from selectedIds.  
+                        selectedIds = $.grep(selectedIds, function (item, index) {
+                            return item != $check.val();
+                        });
+                    }
+                }
+                updateMasterCheckbox();
+            });
+        });
+
+        function onDataBinding(e) {
+            var searchModel = {
+                FromDate: $('#@Html.FieldIdFor(model => model.FromDate)').val(),
+                ToDate: $('#@Html.FieldIdFor(model => model.ToDate)').val(),
+                FromStoreId: $('#@Html.FieldIdFor(model => model.FromStoreId)').val(),
+                ToStoreId: $('#@Html.FieldIdFor(model => model.ToStoreId)').val(),
+                TranNo: $('#@Html.FieldIdFor(model => model.TranNo)').val(),
+                Barcode: $('#@Html.FieldIdFor(model => model.Barcode)').val(),
+                ProductCode: $('#@Html.FieldIdFor(model => model.ProductCode)').val(),
+                Status: $('#@Html.FieldIdFor(model => model.Status)').val()
+            };
+            e.data = searchModel;
+        }
+
+        var aggs = null;
+
+        function onDataBound(e) {
+            $('#inventorytransfers-grid input[type=checkbox][id!=mastercheckbox]').each(function () {
+                var currentId = $(this).val();
+                var checked = jQuery.inArray(currentId, selectedIds);
+                //set checked based on if current checkbox's value is in selectedIds.  
+                $(this).attr('checked', checked > -1);
+            });
+
+            updateMasterCheckbox();
+
+            //Update Agg
+            for (var key in aggs) {
+                $('#aggregator-SumQty-block').text(aggs['SumQty']);
+            }
+
+            $('.t-button.status').each(function (idx, it) {
+                if (it.value == 'Hoàn tất')
+                    $(it).attr('disabled', 'disabled');
+            })
+        }
+
+        function onComplete(e) {
+            aggs = e.response["aggregates"];
+        }
+
+        function updateMasterCheckbox() {
+            var numChkBoxes = $('#inventorytransfers-grid input[type=checkbox][id!=mastercheckbox]').length;
+            var numChkBoxesChecked = $('#inventorytransfers-grid input[type=checkbox][checked][id!=mastercheckbox]').length;
+            $('#mastercheckbox').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
+        }
+    </script>  

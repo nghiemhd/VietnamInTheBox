@@ -1,0 +1,51 @@
+﻿@model IList<ProductOverviewModel>
+
+@using Nop.Web.Models.Catalog;
+
+@if (Model.Count > 0)
+{
+    <div class="product-grid home-page-product-grid">
+        <div class="title">
+            <strong>@T("HomePage.Products")</strong>
+        </div>
+        @if(Model.Count > 3)
+        {
+            <ul class="homepage-product-slider">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <div class="item-box">
+                            @Html.Partial("_ProductBox", item)
+                        </div>
+                    </li>
+                }
+            </ul>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.homepage-product-slider').bxSlider({
+                        autoStart: false,
+                        speed: 1000,
+                        prevText: "",
+                        nextText: "",
+                        pager: false,
+                        maxSlides: 4,
+                        moveSlides: 4,
+                        minSlides: 4,
+                        slideWidth: 220
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+            <div class="item-box">
+                @Html.Partial("_ProductBox", item)
+            </div>
+            }
+        }
+    </div>
+}
+
+<div style="margin-left:9px;margin-bottom:10px;width:920px" data-width="920" class="fb-like" data-href="https://www.facebook.com/Aero87.vn" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>

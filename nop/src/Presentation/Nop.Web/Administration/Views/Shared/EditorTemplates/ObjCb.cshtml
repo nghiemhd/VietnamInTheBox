@@ -1,0 +1,8 @@
+﻿@using Telerik.Web.Mvc.UI
+
+@(Html.Telerik().ComboBox()
+.Name(ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty))
+.Filterable(m => m.FilterMode(AutoCompleteFilterMode.StartsWith))
+.AutoFill(true)
+
+.DataBinding(m => m.Ajax().Cache(true).Select("ObjAjax","Aero87")))
